@@ -1,0 +1,25 @@
+{
+  "name": "living-will-admin",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "next dev -p 4001",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ahooks": "^3.7.8",
+    "antd": "^5.11.5",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recoil": "^0.7.7",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "20.8.7",
+    "@types/react": "18.2.31"
+  }
+}
