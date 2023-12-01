@@ -1,0 +1,14 @@
+.header {
+  background-color: white;
+  height: 50px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.activeBreadcrumb {
+  font-size: 16px;
+  font-weight: 600;
+}

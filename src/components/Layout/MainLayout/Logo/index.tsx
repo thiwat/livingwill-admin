@@ -6,6 +6,7 @@ const Logo = () => {
     <div className={styles.container}>
       <Image
         src={'/images/logo.png'}
+        priority={true}
         height={40}
         width={150}
         style={{
