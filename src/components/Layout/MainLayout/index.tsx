@@ -2,8 +2,7 @@ import { Layout } from 'antd'
 import Menu from './Menu'
 import Logo from "./Logo"
 import { LayoutProps } from "../types"
-
-import styles from './index.module.css'
+import Header from './Header'
 
 const MainLayout = ({ children }: LayoutProps) => {
   return (
@@ -13,8 +12,7 @@ const MainLayout = ({ children }: LayoutProps) => {
         <Menu />
       </Layout.Sider>
       <Layout>
-        <Layout.Header className={styles.header}>
-        </Layout.Header>
+        <Header />
         <Layout.Content style={{ padding: 10 }}>
           {children}
         </Layout.Content>

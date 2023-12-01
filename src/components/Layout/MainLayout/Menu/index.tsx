@@ -1,37 +1,30 @@
 import { Menu as AntMenu } from 'antd'
-import {
-  HomeOutlined,
-  UserOutlined,
-  SettingOutlined
-} from '@ant-design/icons'
+import * as Icon from '@ant-design/icons'
 import useMenu from '../../../../hooks/useMenu'
+import { useMemo } from 'react'
+import { t } from '@/utils/translate'
 
 const Menu = () => {
 
-  const { defaultSelectedKeys, onClick } = useMenu()
+  const { items, defaultSelectedKeys, onClick } = useMenu()
 
-  const menu = [
-    {
-      label: 'Dashboard',
-      key: '/',
-      icon: <HomeOutlined />
-    },
-    {
-      label: 'Users',
-      key: '/users',
-      icon: <UserOutlined />
-    },
-    {
-      label: 'Settings',
-      key: '/settings',
-      icon: <SettingOutlined />
-    }
-  ]
+  const menu = useMemo(() => {
+    return items.map(i => {
+      const MenuIcon = Icon[i.icon]
+      return {
+        label: i.label,
+        key: i.key,
+        children: i.children,
+        icon: <MenuIcon />
+      }
+    })
+  }, [])
 
   return (
     <AntMenu
       defaultSelectedKeys={defaultSelectedKeys}
       items={menu}
+      mode={'inline'}
       onClick={onClick}
     />
   )
