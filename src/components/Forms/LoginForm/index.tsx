@@ -1,13 +1,17 @@
+import useAuth from "@/services/auth"
 import { Button, Input } from "antd"
 import { t } from "../../../utils/translate"
 import Form, { FormItem } from "../../Form"
 
 export const LoginForm = () => {
+
+  const { login } = useAuth()
+
   return (
     <Form
       name={'login-form'}
       style={{ marginTop: 16 }}
-      onFinish={() => alert("finish")}
+      onFinish={login}
     >
       <FormItem
         label={t('login_username')}

@@ -1,5 +1,8 @@
 let TRANSLATES: object = {
+  login_title: 'Login',
   login_username: 'Username',
+  login_password: 'Password',
+  login_button_submit: 'Submit',
   menu_dashboard: 'Dashboard',
   menu_users: 'Users',
   menu_settings: 'Settings',
