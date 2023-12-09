@@ -2,7 +2,7 @@ import { Menu as AntMenu } from 'antd'
 import * as Icon from '@ant-design/icons'
 import useMenu from '../../../../hooks/useMenu'
 import { useMemo } from 'react'
-import { t } from '@/utils/translate'
+import styles from './index.module.css'
 
 const Menu = () => {
 
@@ -27,6 +27,7 @@ const Menu = () => {
       items={menu}
       mode={'inline'}
       onClick={onClick}
+      className={styles.container}
     />
   )
 }

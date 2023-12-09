@@ -5,10 +5,16 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   padding: 0px 10px;
 }
 
 .activeBreadcrumb {
   font-size: 16px;
   font-weight: 600;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: row;
 }
