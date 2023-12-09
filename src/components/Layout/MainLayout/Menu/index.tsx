@@ -6,7 +6,7 @@ import { t } from '@/utils/translate'
 
 const Menu = () => {
 
-  const { items, defaultSelectedKeys, onClick } = useMenu()
+  const { items, defaultSelectedKeys, defaultOpenKeys, onClick } = useMenu()
 
   const menu = useMemo(() => {
     return items.map(i => {
@@ -23,6 +23,7 @@ const Menu = () => {
   return (
     <AntMenu
       defaultSelectedKeys={defaultSelectedKeys}
+      defaultOpenKeys={defaultOpenKeys}
       items={menu}
       mode={'inline'}
       onClick={onClick}

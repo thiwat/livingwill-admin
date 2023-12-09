@@ -22,7 +22,7 @@ const useBreadcrumb = () => {
   }
 
   const activeItem: string = useMemo<string>(() => {
-    return _getMenuFromPath(MENU, router.asPath)
+    return _getMenuFromPath(MENU, router.pathname)
 
   }, [router.asPath])
 
