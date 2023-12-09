@@ -20,7 +20,49 @@ export const MENU = [
       {
         label: 'menu_lawyers',
         key: '/audience/lawyer'
+      },
+      {
+        label: 'menu_web_masters',
+        key: '/audience/web_master',
       }
+    ]
+  },
+  {
+    label: 'menu_services',
+    key: '/service',
+    icon: 'ScheduleOutlined',
+    children: [
+      {
+        label: 'menu_testament',
+        key: '/service/testament',
+      },
+      {
+        label: 'menu_package',
+        key: '/service/menu_package',
+      }
+    ]
+  },
+  {
+    label: 'menu_contents',
+    key: '/content',
+    icon: 'GroupOutlined',
+    children: [
+      {
+        label: 'menu_blog',
+        key: '/content/blog',
+      },
+      {
+        label: 'menu_cms_page',
+        key: '/content/cms_page',
+      },
+      {
+        label: 'menu_cms_block',
+        key: '/content/cms_block'
+      },
+      {
+        label: 'menu_notification_template',
+        key: '/content/notification_template',
+      },
     ]
   },
   {
@@ -29,8 +71,16 @@ export const MENU = [
     icon: 'SettingOutlined',
     children: [
       {
+        label: 'menu_settings_application',
+        key: '/settings/application'
+      },
+      {
         label: 'menu_settings_authen',
         key: '/settings/authen'
+      },
+      {
+        label: 'menu_settings_footer',
+        key: '/settings/footer'
       },
       {
         label: 'menu_settings_gateways',
