@@ -29,9 +29,18 @@ const useMenu = () => {
     return [router.asPath]
   }
 
+  const getDefaultOpenKeys = (): string[] => {
+    const paths = router.pathname.split('/')
+    if (paths.length < 3) {
+      return []
+    }
+    return [`/${paths[1]}`]
+  }
+
   return {
     items,
     defaultSelectedKeys: getDefaultSelectedKeys(),
+    defaultOpenKeys: getDefaultOpenKeys(),
     onClick
   }
 }

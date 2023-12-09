@@ -7,8 +7,10 @@ const nextConfig = {
     '@ant-design/pro-editor',
     'zustand', 'leva', 'antd',
     'rc-pagination',
+    'rc-tree',
     'rc-picker',
-    'ahooks'
+    'ahooks',
+    'rc-table'
   ],
 }
 
