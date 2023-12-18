@@ -1,4 +1,5 @@
 import List from "@/components/List"
+import { USER_STATE_COLORS } from "@/constants/colors"
 import { Entity } from "@/enums/entity"
 import { ListItemType } from "@/enums/list"
 import { Roles } from "@/enums/role"
@@ -24,12 +25,6 @@ const COLUMNS: ListItemProps[] = [
   },
   {
     type: ListItemType.string,
-    title: 'user_username',
-    dataIndex: 'username',
-    key: 'username'
-  },
-  {
-    type: ListItemType.string,
     title: 'user_email',
     dataIndex: 'email',
     key: 'email'
@@ -39,6 +34,16 @@ const COLUMNS: ListItemProps[] = [
     title: 'user_full_name',
     dataIndex: 'full_name',
     key: 'full_name'
+  },
+  {
+    type: ListItemType.badge,
+    title: 'user_state',
+    dataIndex: 'state',
+    key: 'state',
+    options: {
+      mapColors: USER_STATE_COLORS,
+      prefixTranslate: 'user_state_'
+    }
   },
   {
     type: ListItemType.date,

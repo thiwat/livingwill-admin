@@ -1,12 +1,16 @@
 import { requestAuthLogin, requestMyProfile } from "@/apis/client/auth"
 import { useSetProfileState } from "@/atoms/profile"
+import { useSettingsStateValue } from "@/atoms/settings"
 import { cookies } from "@/utils/cookies"
 import { useRequest } from "ahooks"
 import { useRouter } from "next/router"
+import { useRef } from "react"
 
 const useAuth = () => {
 
   const router = useRouter()
+  const recaptchaToken = useRef<string>('')
+  const settings = useSettingsStateValue()
   const setProfile = useSetProfileState()
 
   const authRequest = useRequest(requestAuthLogin, {
@@ -26,14 +30,27 @@ const useAuth = () => {
   })
 
   const login = (values: any) => {
-    authRequest.run({
-      username: values.username,
-      password: values.password
-    })
+    settings.recaptcha?.enabled
+      ? authRequest.run({
+        username: values.username,
+        password: values.password,
+        recaptcha_token: recaptchaToken.current
+      })
+      : authRequest.run({
+
+        username: values.username,
+        password: values.password
+      })
+  }
+
+  const onVerifyCaptcha = (token: string) => {
+    recaptchaToken.current = token
   }
 
   return {
-    login
+    recaptcha: settings['recaptcha'],
+    login,
+    onVerifyCaptcha,
   }
 }
 
