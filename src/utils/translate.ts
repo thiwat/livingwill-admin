@@ -23,6 +23,8 @@ let TRANSLATES: object = {
   menu_settings_footer: 'Footer',
   menu_settings_gateways: 'Gateways',
   menu_settings_translates: 'Translates',
+  user_state: 'State',
+  user_state_active: 'Active',
   user_user_id: 'User ID',
   user_username: 'Username',
   user_email: 'Email',

@@ -1,9 +1,11 @@
+import _get from 'lodash/get'
 import _cloneDeep from 'lodash/cloneDeep'
-import { ListItemProps } from '@/types/list'
+import { ListItemOptionProps, ListItemProps } from '@/types/list'
 import { ListItemType } from "@/enums/list";
 import { formatDateTime } from '@/utils/date'
 import ListActions from '@/components/List/Actions';
 import { t } from './translate';
+import { Tag } from 'antd';
 
 
 export const prepareListColumns = (columns: ListItemProps[], key: string) => {
@@ -24,10 +26,12 @@ export const prepareListColumns = (columns: ListItemProps[], key: string) => {
   return cols
 }
 
-const _renderByType = (type: ListItemType, options?: object) => {
+const _renderByType = (type: ListItemType, options?: ListItemOptionProps) => {
   switch (type) {
     case ListItemType.date:
       return _renderDate
+    case ListItemType.badge:
+      return _renderBadge(options)
     case ListItemType.action:
       return rowId => <ListActions rowId={rowId} />
     default:
@@ -37,4 +41,12 @@ const _renderByType = (type: ListItemType, options?: object) => {
 
 const _renderDate = (value: string) => {
   return formatDateTime(value)
+}
+
+const _renderBadge = (options: ListItemOptionProps) => (value: string) => {
+  return (
+    <Tag color={_get(options, `mapColors.${value}`)} >
+      {t(`${options.prefixTranslate}${value}`)}
+    </Tag>
+  )
 }

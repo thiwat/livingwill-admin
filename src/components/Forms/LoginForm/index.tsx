@@ -1,16 +1,21 @@
 import useAuth from "@/services/auth"
 import { Button, Input } from "antd"
+import { GoogleReCaptcha } from "react-google-recaptcha-v3"
 import { t } from "../../../utils/translate"
 import Form, { FormItem } from "../../Form"
+import styles from './index.module.css'
 
 export const LoginForm = () => {
 
-  const { login } = useAuth()
+  const { recaptcha,
+    login,
+    onVerifyCaptcha
+  } = useAuth()
 
   return (
     <Form
       name={'login-form'}
-      style={{ marginTop: 16 }}
+      className={styles.form}
       onFinish={login}
     >
       <FormItem
@@ -28,13 +33,18 @@ export const LoginForm = () => {
         <Input.Password />
       </FormItem>
       <Button
-        style={{ width: '100%', marginTop: 8 }}
+        className={styles.loginButton}
         type={'primary'}
         htmlType={'submit'}
         size={'large'}
       >
         {t('login_button_submit')}
       </Button>
+      {recaptcha?.enabled &&
+        <GoogleReCaptcha
+          onVerify={onVerifyCaptcha}
+        />
+      }
     </Form>
   )
 }
