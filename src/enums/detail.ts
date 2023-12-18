@@ -1,3 +1,5 @@
 export enum DetailItemType {
-  string = 'string'
+  space = 'space',
+  string = 'string',
+  boolean = 'boolean'
 }

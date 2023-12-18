@@ -20,6 +20,7 @@ let TRANSLATES: object = {
   menu_settings: 'Settings',
   menu_settings_application: 'Applications',
   menu_settings_authen: 'Authentication',
+  menu_settings_security: 'Security',
   menu_settings_footer: 'Footer',
   menu_settings_gateways: 'Gateways',
   menu_settings_translates: 'Translates',
@@ -30,7 +31,12 @@ let TRANSLATES: object = {
   user_email: 'Email',
   user_full_name: 'Full name',
   user_last_logged_in_date: 'Last logged in',
-  common_table_create_button: 'Create'
+  common_table_create_button: 'Create',
+  common_save_button: 'Save',
+  setting_security_recaptcha: 'Recaptcha',
+  setting_security_recaptcha_enable: 'Enable recaptcha',
+  setting_security_recaptcha_site_key: 'Site key',
+  setting_security_recaptcha_secret_key: 'Secret key'
 }
 
 export const t = (key: string, data?: unknown): string => {
