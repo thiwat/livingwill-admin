@@ -34,7 +34,7 @@ const useBreadcrumb = () => {
 
     return undefined
 
-  }, [router.asPath])
+  }, [router.asPath, breadcrumb])
 
   return {
     activeItem

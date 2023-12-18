@@ -75,6 +75,10 @@ export const MENU = [
         key: '/settings/application'
       },
       {
+        label: 'menu_settings_security',
+        key: '/settings/security'
+      },
+      {
         label: 'menu_settings_authen',
         key: '/settings/authen'
       },

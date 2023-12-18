@@ -4,6 +4,7 @@ import Logo from "./Logo"
 import { LayoutProps } from "../types"
 import Header from './Header'
 import Footer from './Footer'
+import styles from './index.module.css'
 
 const MainLayout = ({ children }: LayoutProps) => {
   return (
@@ -15,7 +16,7 @@ const MainLayout = ({ children }: LayoutProps) => {
       </Layout.Sider>
       <Layout>
         <Header />
-        <Layout.Content style={{ padding: 10 }}>
+        <Layout.Content className={styles.content}>
           {children}
         </Layout.Content>
       </Layout>
