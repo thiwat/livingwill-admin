@@ -16,7 +16,7 @@ const SettingForm = ({
     loading,
     isSaving,
     onSave
-  } = useSetting({ name })
+  } = useSetting({ name, sections })
 
   if (loading) return null
 

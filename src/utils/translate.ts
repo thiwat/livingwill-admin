@@ -22,7 +22,7 @@ let TRANSLATES: object = {
   menu_settings_authen: 'Authentication',
   menu_settings_security: 'Security',
   menu_settings_footer: 'Footer',
-  menu_settings_gateways: 'Gateways',
+  menu_settings_gateway: 'Gateways',
   menu_settings_translates: 'Translates',
   user_state: 'State',
   user_state_active: 'Active',
@@ -36,7 +36,22 @@ let TRANSLATES: object = {
   setting_security_recaptcha: 'Recaptcha',
   setting_security_recaptcha_enable: 'Enable recaptcha',
   setting_security_recaptcha_site_key: 'Site key',
-  setting_security_recaptcha_secret_key: 'Secret key'
+  setting_security_recaptcha_secret_key: 'Secret key',
+  common_save_setting_success: 'Save setting success',
+  setting_gateway_email: 'Email Gateway',
+  setting_gateway_email_enable: 'Enabled',
+  setting_gateway_email_provider: 'Provider',
+  setting_gateway_email_send_from: 'Send from',
+  setting_gateway_email_host: 'Host',
+  setting_gateway_email_port: 'Port',
+  setting_gateway_email_username: 'Username',
+  setting_gateway_email_password: 'Password',
+  setting_gateway_line: 'Line',
+  setting_gateway_line_enable: 'Enabled',
+  setting_gateway_line_access_token: 'Access token',
+  setting_gateway_provider_gmail: 'Gmail',
+  setting_gateway_provider_outlook: 'Outlook',
+  setting_gateway_provider_custom: 'Custom'
 }
 
 export const t = (key: string, data?: unknown): string => {

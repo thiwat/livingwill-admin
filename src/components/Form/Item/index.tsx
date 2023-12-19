@@ -6,10 +6,12 @@ import { Input, Switch } from "antd"
 import { FormItem } from ".."
 import { FormItemByTypeProps } from "./types"
 import { getItemProps } from '@/utils/form'
+import Select from '@/components/Select'
 
 const FormItemByType = ({
   type,
   extraData,
+  options,
   ...props
 }: FormItemByTypeProps) => {
 
@@ -18,6 +20,13 @@ const FormItemByType = ({
       return (
         <FormItem {...props}>
           <Input />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.number) {
+      return (
+        <FormItem {...props}>
+          <Input type={'number'} />
         </FormItem>
       )
     }
@@ -32,6 +41,13 @@ const FormItemByType = ({
       return (
         <FormItem {...props}>
           <Input.Password />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.select) {
+      return (
+        <FormItem {...props}>
+          <Select options={options} />
         </FormItem>
       )
     }
