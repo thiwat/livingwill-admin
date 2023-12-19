@@ -1,6 +1,7 @@
+import { FieldValueFunction } from '@/types/detail'
 import _cloneDeep from 'lodash/cloneDeep'
 
-export const executeBooleanValue = (value: boolean | Function, extra): boolean => {
+export const executeBooleanValue = (value: boolean | FieldValueFunction, extra): boolean => {
   if (typeof value === 'function') {
     return value(extra)
   }

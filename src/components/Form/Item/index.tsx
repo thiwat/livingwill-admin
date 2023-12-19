@@ -23,8 +23,15 @@ const FormItemByType = ({
     }
     if (type === DetailItemType.boolean) {
       return (
-        <FormItem {...props}>
+        <FormItem {...props} valuePropName="checked">
           <Switch />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.password) {
+      return (
+        <FormItem {...props}>
+          <Input.Password />
         </FormItem>
       )
     }
