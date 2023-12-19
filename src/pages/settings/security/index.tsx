@@ -35,7 +35,7 @@ const SECTIONS: SectionProps[] = [
       {
         name: ['recaptcha', 'secret_key'],
         label: 'setting_security_recaptcha_secret_key',
-        type: DetailItemType.string,
+        type: DetailItemType.password,
         dependenciesFields: ['recaptcha.enabled'],
         required: ({ values }) => _get(values, 'recaptcha.enabled')
       }

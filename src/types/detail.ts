@@ -1,6 +1,6 @@
-import { DetailItemType } from "@/enums/detail"
+import { ActionMode, DetailItemType } from "@/enums/detail"
 
-export type FieldValueFunction = ({ values, mode }: { values: any, mode: string }) => boolean
+export type FieldValueFunction = ({ values, mode }: { values: any, mode: ActionMode }) => boolean
 
 export type FieldItem = {
   label?: string;
