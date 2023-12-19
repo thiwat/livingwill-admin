@@ -87,8 +87,8 @@ export const MENU = [
         key: '/settings/footer'
       },
       {
-        label: 'menu_settings_gateways',
-        key: '/settings/gateways'
+        label: 'menu_settings_gateway',
+        key: '/settings/gateway'
       },
       {
         label: 'menu_settings_translates',
