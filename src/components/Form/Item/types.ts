@@ -7,6 +7,7 @@ type Overwrite<T, U> = Omit<T, keyof U> & U;
 export type FormItemByTypeProps = Overwrite<FormItemProps, {
   type: DetailItemType,
   dependenciesFields?: string[],
+  disabled?: boolean | FieldValueFunction;
   required?: boolean | FieldValueFunction;
   hidden?: boolean | FieldValueFunction;
   extraData: any;

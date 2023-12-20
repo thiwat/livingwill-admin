@@ -6,7 +6,8 @@ import styles from './index.module.css'
 
 const Section = ({
   title,
-  fields
+  fields,
+  extraData
 }: SectionProps) => {
   return (
     <div className={styles.container}>
@@ -20,7 +21,7 @@ const Section = ({
           <Col span={f.span || 12} key={`field-${index}`}>
             <FormItemByType
               {...f}
-              extraData={{ values: {} }}
+              extraData={extraData || {}}
               label={t(f.label)}
             />
           </Col>

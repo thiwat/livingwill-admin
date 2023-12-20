@@ -1,5 +1,5 @@
 import { request } from "../request"
-import { RequestDetailProps, RequestListProps } from "./types"
+import { RequestDetailProps, RequestListProps, RequestUpdateProps } from "./types"
 import { buildQuery } from "@/utils/request"
 
 export const requestList = ({ entity, ...other }: RequestListProps): Promise<unknown> => {
@@ -8,4 +8,8 @@ export const requestList = ({ entity, ...other }: RequestListProps): Promise<unk
 
 export const requestDetail = ({ entity, id }: RequestDetailProps): Promise<object> => {
   return request(`/entity/${entity}/${id}`, 'GET')
+}
+
+export const requestUpdate = ({ entity, id, data }: RequestUpdateProps): Promise<object> => {
+  return request(`/entity/${entity}/${id}`, 'PUT', data)
 }

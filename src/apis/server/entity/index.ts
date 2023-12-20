@@ -17,3 +17,12 @@ export const requestEntityRecord = async (
 ): Promise<unknown> => {
   return request(`v1/${entity}/${id}`, 'GET', undefined, headers)
 }
+
+export const requestUpdateRecord = async (
+  entity: string,
+  id: string,
+  body: any,
+  headers: object
+): Promise<unknown> => {
+  return request(`v1/${entity}/${id}`, 'PUT', body, headers)
+}

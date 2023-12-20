@@ -1,4 +1,4 @@
-import { requestEntityRecord } from '@/apis/server/entity'
+import { requestEntityRecord, requestUpdateRecord } from '@/apis/server/entity'
 import { getHeadersFromRequest } from '@/apis/server/request'
 import _omit from 'lodash/omit'
 import _get from 'lodash/get'
@@ -10,6 +10,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const result = await requestEntityRecord(
         req.query.name as string,
         req.query.key as string,
+        getHeadersFromRequest(req)
+      )
+      return res.status(200).json(result)
+    } catch (e) {
+      return res.status(e.status).json(e.error)
+    }
+  }
+  if (req.method === 'PUT') {
+    try {
+      const result = await requestUpdateRecord(
+        req.query.name as string,
+        req.query.key as string,
+        req.body,
         getHeadersFromRequest(req)
       )
       return res.status(200).json(result)

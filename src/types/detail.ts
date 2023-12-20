@@ -19,10 +19,18 @@ export type FieldItem = {
   dependenciesFields?: string[];
   required?: boolean | FieldValueFunction;
   hidden?: boolean | FieldValueFunction;
+  disabled?: boolean | FieldValueFunction;
   options?: FieldItemOptions
 }
 
 export type SectionProps = {
   title?: string;
   fields: FieldItem[];
+  extraData?: object;
+}
+
+export type DetailBadgeProps = {
+  fieldName: string,
+  mapColors: object;
+  prefixTranslate?: string;
 }

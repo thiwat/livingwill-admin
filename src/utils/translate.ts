@@ -1,3 +1,5 @@
+import _template from 'lodash/template'
+
 let TRANSLATES: object = {
   login_title: 'Login',
   login_username: 'Username',
@@ -51,11 +53,32 @@ let TRANSLATES: object = {
   setting_gateway_line_access_token: 'Access token',
   setting_gateway_provider_gmail: 'Gmail',
   setting_gateway_provider_outlook: 'Outlook',
-  setting_gateway_provider_custom: 'Custom'
+  setting_gateway_provider_custom: 'Custom',
+  common_create_at: 'Created at : ${ time }',
+  common_update_at: 'Updated at : ${ time }',
+  user_access_information: 'Access Information',
+  user_general_information: 'General Information',
+  user_mobile_no: 'Mobile no',
+  user_last_logged_in: 'Last logged in',
+  user_first_name: 'First name',
+  user_last_name: 'Last name',
+  common_yes: 'Yes',
+  common_no: 'No',
+  package_name: 'Name',
+  package_code: 'Code',
+  package_price: 'Price',
+  package_enabled: 'Enabled',
+  package_is_default: 'Is default',
+  package_general_information: 'General Information',
+  package_description: 'Description',
+  package_detail_information: 'Detail Information',
+  package_number_of_asset: 'Number of asset',
+  package_detail: 'Detail',
+  common_update_success: 'Update success',
 }
 
 export const t = (key: string, data?: unknown): string => {
-  return TRANSLATES[key] || key
+  return _template(TRANSLATES[key] || key)(data)
 }
 
 export const setTranslate = (translate: object) => {

@@ -38,7 +38,7 @@ export const MENU = [
       },
       {
         label: 'menu_package',
-        key: '/service/menu_package',
+        key: '/service/package',
       }
     ]
   },

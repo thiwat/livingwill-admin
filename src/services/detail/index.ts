@@ -1,11 +1,16 @@
-import { requestDetail } from "@/apis/client/entity"
+import _get from 'lodash/get'
+import { requestDetail, requestUpdate } from "@/apis/client/entity"
 import { useBreadcrumbState } from "@/atoms/breadcrumb"
+import { ActionMode } from "@/enums/detail"
 import { compileTemplate } from "@/utils/template"
+import { t } from "@/utils/translate"
 import { useRequest } from "ahooks"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { DetailServiceProps } from "./types"
+import { message } from 'antd'
 
 const useDetail = ({
+  badge,
   title,
   entity,
   keyData
@@ -13,7 +18,7 @@ const useDetail = ({
 
   const [breadcrumb, setBreadcrumb] = useBreadcrumbState()
 
-  const request = useRequest(requestDetail, {
+  const getRequest = useRequest(requestDetail, {
     manual: true,
     onSuccess: (r) => {
       if (title) {
@@ -23,9 +28,32 @@ const useDetail = ({
     }
   })
 
+  const updateRequest = useRequest(requestUpdate, {
+    manual: true,
+    onSuccess: (r) => {
+      message.success(t('common_update_success'))
+    }
+  })
+
+  const onSubmit = (values) => {
+    updateRequest.run({
+      entity,
+      id: keyData,
+      data: values
+    })
+  }
+
+  const badgeData = useMemo(() => {
+    if (!badge) return {}
+    return {
+      label: t(`${badge.prefixTranslate}${_get(getRequest.data, badge.fieldName)}`),
+      color: _get(badge.mapColors, _get(getRequest.data, badge.fieldName))
+    }
+  }, [getRequest.data])
+
   useEffect(() => {
     if (keyData) {
-      request.run({
+      getRequest.run({
         entity,
         id: keyData
       })
@@ -33,7 +61,12 @@ const useDetail = ({
   }, [])
 
   return {
-    displayTitle: breadcrumb
+    mode: keyData ? ActionMode.update : ActionMode.create,
+    badgeData,
+    loading: getRequest.loading,
+    data: getRequest.data,
+    displayTitle: breadcrumb,
+    onSubmit
   }
 }
 
