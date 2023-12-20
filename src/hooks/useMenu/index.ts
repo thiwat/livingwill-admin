@@ -26,7 +26,11 @@ const useMenu = () => {
   }
 
   const getDefaultSelectedKeys = (): string[] => {
-    return [router.asPath]
+    const lastPath = router.pathname.split('/').at(-1)
+    const isDetail = lastPath.startsWith('[') && lastPath.endsWith(']')
+    return isDetail
+      ? [router.asPath.split('/').slice(0, -1).join('/')]
+      : [router.asPath]
   }
 
   const getDefaultOpenKeys = (): string[] => {

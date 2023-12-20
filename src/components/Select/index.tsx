@@ -2,10 +2,11 @@ import { t } from '@/utils/translate'
 import { Select as AntSelect } from 'antd'
 import { SelectProps } from './types'
 
-const Select = ({ options, value, onChange }: SelectProps) => {
+const Select = ({ options, disabled, value, onChange }: SelectProps) => {
   return (
     <AntSelect
       value={value}
+      disabled={disabled}
       onChange={onChange}
       options={options.options.map(i => ({
         label: t(i.label),

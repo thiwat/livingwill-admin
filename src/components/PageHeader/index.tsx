@@ -1,10 +1,12 @@
+import _isEmpty from 'lodash/isEmpty'
 import { PageHeaderProps } from "./types"
 import styles from './index.module.css'
-import { Row, Space } from "antd"
+import { Row, Space, Tag } from "antd"
 import React from "react"
 
 const PageHeader = ({
   title,
+  badge,
   extra
 }: PageHeaderProps) => {
   return (
@@ -14,7 +16,17 @@ const PageHeader = ({
         align={'middle'}
         className={styles.header}
       >
-        <h1 className={styles.title}>{title}</h1>
+        <>
+          <h1 className={styles.title}>
+            {title}
+            {!_isEmpty(badge) &&
+              <Tag color={badge.color} className={styles.badge}>
+                {badge.label}
+              </Tag>
+            }
+          </h1>
+
+        </>
         {extra?.length > 0 &&
           <Space>
             {extra.map((i, index) => (

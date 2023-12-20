@@ -31,11 +31,11 @@ const MyApp = ({ Component, pageProps }) => {
     }
 
     if (pageProps?.token && NOT_REQUIRE_AUTH.includes(router.pathname)) {
-      return router.push('/').then(() => setLoading(false))
+      return router.push('/').then(() => setTimeout(() => setLoading(false), 500))
     }
 
     if (!pageProps?.token && !NOT_REQUIRE_AUTH.includes(router.pathname)) {
-      return router.push('/login').then(() => setLoading(false))
+      return router.push('/login').then(() => setTimeout(() => setLoading(false), 500))
     }
 
     setLoading(false)

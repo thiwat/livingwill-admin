@@ -12,3 +12,9 @@ export type RequestDetailProps = {
   entity: Entity,
   id: string,
 }
+
+export type RequestUpdateProps = {
+  entity: Entity,
+  data: any,
+  id: string,
+}

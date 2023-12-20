@@ -3,7 +3,9 @@ export enum DetailItemType {
   string = 'string',
   boolean = 'boolean',
   password = 'password',
+  datetime = 'datetime',
   select = 'select',
+  wysiwyg = 'wysiwyg',
   number = 'number'
 }
 

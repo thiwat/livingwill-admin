@@ -2,7 +2,8 @@ import { ListItemType } from "@/enums/list";
 
 export type ListItemOptionProps = {
   mapColors?: { [key: string]: string },
-  prefixTranslate?: string
+  prefixTranslate?: string,
+  format?: string;
 }
 
 export type ListItemProps = {
