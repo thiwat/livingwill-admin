@@ -8,7 +8,8 @@ export type FieldItemOption = {
 }
 
 export type FieldItemOptions = {
-  options?: FieldItemOption[]
+  options?: FieldItemOption[],
+  multiple?: boolean;
 }
 
 export type FieldItem = {

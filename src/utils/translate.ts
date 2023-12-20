@@ -75,6 +75,18 @@ let TRANSLATES: object = {
   package_number_of_asset: 'Number of asset',
   package_detail: 'Detail',
   common_update_success: 'Update success',
+  application_name: 'Name',
+  application_code: 'Code',
+  application_app_key: 'App key',
+  application_enabled: 'Enabled',
+  application_general_information: 'General Information',
+  application_key_information: 'Key Information',
+  application_secret_key: 'Secret key',
+  application_roles: 'Roles',
+  user_role_admin: 'Admin',
+  user_role_customer: 'Customer',
+  user_role_lawyer: 'Lawyer',
+  user_role_web_master: 'Web master'
 }
 
 export const t = (key: string, data?: unknown): string => {
