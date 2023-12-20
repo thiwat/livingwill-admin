@@ -7,6 +7,7 @@ const Select = ({ options, disabled, value, onChange }: SelectProps) => {
     <AntSelect
       value={value}
       disabled={disabled}
+      mode={options.multiple ? 'multiple' : undefined}
       onChange={onChange}
       options={options.options.map(i => ({
         label: t(i.label),

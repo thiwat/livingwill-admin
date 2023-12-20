@@ -1,4 +1,5 @@
 export enum Entity {
   user = 'user',
-  package = 'package'
+  package = 'package',
+  application = 'application'
 }
