@@ -1,7 +1,9 @@
+import { requestRevokeSecret } from "@/apis/client/application"
 import Detail from "@/components/Detail"
 import { ActionMode, DetailItemType } from "@/enums/detail"
 import { Entity } from "@/enums/entity"
 import { SectionProps } from "@/types/detail"
+import { t } from "@/utils/translate"
 import { useParams } from "next/navigation"
 
 const ApplicationDetail = () => {
@@ -14,6 +16,17 @@ const ApplicationDetail = () => {
       entity={Entity.application}
       sections={SECTIONS}
       keyData={params.key as string}
+      actions={[
+        {
+          label: t('application_action_revoke_secret'),
+          key: 'revoke_secret',
+          action: requestRevokeSecret,
+          conditions: ({ values }) => values?.code !== 'default',
+          params: ({ values }) => ({
+            code: values['code']
+          })
+        }
+      ]}
     />
   )
 }

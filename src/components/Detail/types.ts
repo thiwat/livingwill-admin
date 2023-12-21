@@ -1,5 +1,5 @@
 import { Entity } from "@/enums/entity";
-import { DetailBadgeProps, SectionProps } from "@/types/detail";
+import { Action, DetailBadgeProps, SectionProps } from "@/types/detail";
 
 export type DetailProps = {
   sections: SectionProps[]
@@ -7,4 +7,5 @@ export type DetailProps = {
   entity: Entity
   keyData: string,
   badge?: DetailBadgeProps
+  actions?: Action[]
 }
