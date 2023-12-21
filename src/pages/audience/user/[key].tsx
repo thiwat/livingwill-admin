@@ -15,6 +15,7 @@ const UserDetail = () => {
       entity={Entity.user}
       sections={SECTIONS}
       keyData={params.key as string}
+      actions={{ delete: false }}
       badge={{
         fieldName: 'state',
         mapColors: USER_STATE_COLORS,

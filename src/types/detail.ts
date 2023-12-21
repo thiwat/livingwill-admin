@@ -50,5 +50,5 @@ export type CustomAction = {
 }
 
 export type Actions = {
-  delete: ActionCondition;
+  delete: boolean | ActionCondition;
 }

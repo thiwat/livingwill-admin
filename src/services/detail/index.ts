@@ -11,6 +11,7 @@ import { message, Form as AntForm } from 'antd'
 import { useRouter } from 'next/router'
 import { usePathname } from 'next/navigation'
 import { Entity } from '@/enums/entity'
+import { executeBooleanValue } from '@/utils/form'
 
 const useDetail = ({
   badge,
@@ -108,6 +109,8 @@ const useDetail = ({
   const filteredCustomActions = useMemo(() => {
     if (!getRequest.data) return []
 
+    if (!customActions) return []
+
     return customActions
       .filter(i => i.conditions({ values: getRequest.data }))
 
@@ -116,8 +119,10 @@ const useDetail = ({
   const compiledActions = useMemo(() => {
     if (!getRequest.data) return {}
 
+    if (!actions) return {}
+
     return {
-      delete: actions.delete({ values: getRequest.data })
+      delete: executeBooleanValue(actions.delete, { values: getRequest.data })
     }
   }, [getRequest.data])
 

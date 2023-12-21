@@ -9,7 +9,7 @@ const DeleteButton = ({ actions, mode, onClick }: DeleteButtonProps) => {
 
   if (mode === ActionMode.create) return null
 
-  if (_isEmpty(actions) || !actions.delete) return null
+  if (!_isEmpty(actions) && !actions.delete) return null
 
   return (
     <Popconfirm
