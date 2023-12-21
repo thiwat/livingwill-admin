@@ -23,6 +23,7 @@ const CustomActions = ({ mode, actions, onClick }: CustomActionsProps) => {
         })),
         onClick: _onClick
       }}
+      placement={'bottomRight'}
     >
       <Button icon={<MoreOutlined />} />
     </Dropdown>

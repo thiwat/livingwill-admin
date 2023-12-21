@@ -1,4 +1,4 @@
-import { requestList } from '@/apis/server/entity'
+import { requestCreateRecord, requestList } from '@/apis/server/entity'
 import { getHeadersFromRequest } from '@/apis/server/request'
 import _omit from 'lodash/omit'
 import _get from 'lodash/get'
@@ -15,6 +15,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(200).json(result)
     } catch (e) {
       return res.status(e.status).json(e.error)
+    }
+  }
+  if (req.method === 'POST') {
+    try {
+      const result = await requestCreateRecord(
+        _get(req, 'query.name'),
+        req.body,
+        getHeadersFromRequest(req)
+      )
+      return res.status(200).json(result)
+    } catch (e) {
+      return res.status(e.status).json(e.erro)
     }
   }
 

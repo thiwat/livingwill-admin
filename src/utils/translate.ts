@@ -86,7 +86,12 @@ let TRANSLATES: object = {
   user_role_admin: 'Admin',
   user_role_customer: 'Customer',
   user_role_lawyer: 'Lawyer',
-  user_role_web_master: 'Web master'
+  user_role_web_master: 'Web master',
+  application_description: 'Description',
+  common_delete_title: 'Delete the record',
+  common_delete_description: 'Are you sure to delete this record?',
+  common_execute_action_success: 'Execute action successfully.',
+  application_action_revoke_secret: 'Revoke secret key'
 }
 
 export const t = (key: string, data?: unknown): string => {

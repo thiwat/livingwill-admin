@@ -9,6 +9,7 @@ import { DetailProps } from "./types"
 import Section from '../Sections'
 import Form from '../Form'
 import CustomActions from './CustomActions'
+import DeleteButton from './DeleteButton'
 
 const Detail = ({
   sections,
@@ -19,11 +20,13 @@ const Detail = ({
     form,
     data,
     actions,
+    customActions,
     badgeData,
     mode,
     loading,
     displayTitle,
     onSubmit,
+    onDelete,
     onClickCustomAction
   } = useDetail(props)
 
@@ -45,9 +48,14 @@ const Detail = ({
             updatedAt={_get(data, 'updated_at')}
           />,
           <CustomActions
-            actions={actions}
+            actions={customActions}
             onClick={onClickCustomAction}
             mode={mode}
+          />,
+          <DeleteButton
+            actions={actions}
+            mode={mode}
+            onClick={onDelete}
           />,
           <Button
             type={'primary'}

@@ -2,7 +2,9 @@ import { ActionMode, AfterActionExecute, DetailItemType } from "@/enums/detail"
 
 export type FieldValueFunction = ({ values, mode }: { values: any, mode: ActionMode }) => boolean
 
-export type ActionExecute = ({ values }: { values: any }) => any;
+export type CustomActionExecute = ({ values }: { values: any }) => any;
+
+export type ActionCondition = ({ values }) => boolean;
 
 export type FieldItemOption = {
   label: string;
@@ -38,11 +40,15 @@ export type DetailBadgeProps = {
   prefixTranslate?: string;
 }
 
-export type Action = {
+export type CustomAction = {
   label: string;
   key: string;
   action: Function;
-  conditions: ActionExecute;
-  params: ActionExecute;
+  conditions: CustomActionExecute;
+  params: CustomActionExecute;
   afterExecute?: AfterActionExecute;
+}
+
+export type Actions = {
+  delete: ActionCondition;
 }

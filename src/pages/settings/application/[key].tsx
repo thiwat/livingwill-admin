@@ -16,7 +16,10 @@ const ApplicationDetail = () => {
       entity={Entity.application}
       sections={SECTIONS}
       keyData={params.key as string}
-      actions={[
+      actions={{
+        delete: ({ values }) => values?.code !== 'default'
+      }}
+      customActions={[
         {
           label: t('application_action_revoke_secret'),
           key: 'revoke_secret',

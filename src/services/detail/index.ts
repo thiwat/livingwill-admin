@@ -1,5 +1,5 @@
 import _get from 'lodash/get'
-import { requestDetail, requestUpdate } from "@/apis/client/entity"
+import { requestCreate, requestDelete, requestDetail, requestUpdate } from "@/apis/client/entity"
 import { useBreadcrumbState } from "@/atoms/breadcrumb"
 import { ActionMode } from "@/enums/detail"
 import { compileTemplate } from "@/utils/template"
@@ -8,15 +8,21 @@ import { useRequest } from "ahooks"
 import { useEffect, useMemo } from "react"
 import { DetailServiceProps } from "./types"
 import { message, Form as AntForm } from 'antd'
+import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
+import { Entity } from '@/enums/entity'
 
 const useDetail = ({
   badge,
   title,
   entity,
   actions,
+  customActions,
   keyData
 }: DetailServiceProps) => {
 
+  const router = useRouter()
+  const pathname = usePathname()
   const [form] = AntForm.useForm()
   const [breadcrumb, setBreadcrumb] = useBreadcrumbState()
 
@@ -37,12 +43,37 @@ const useDetail = ({
     }
   })
 
+  const createRequset = useRequest(requestCreate, {
+    manual: true,
+    onSuccess: (r) => {
+      const path = pathname.replace('/create', '')
+      const key = entity === Entity.user
+        ? 'user_id'
+        : 'code'
+      message.success('common_create_success')
+      router.replace(`${path}/[key]`, `${path}/${_get(r, key)}`)
+    }
+  })
+
+  const deleteRequest = useRequest(requestDelete, {
+    manual: true,
+    onSuccess: (r) => {
+      message.success('common_delete_success')
+      router.back()
+    }
+  })
+
   const onSubmit = (values) => {
-    updateRequest.run({
-      entity,
-      id: keyData,
-      data: values
-    })
+    keyData && keyData !== 'create'
+      ? updateRequest.run({
+        entity,
+        id: keyData,
+        data: values
+      })
+      : createRequset.run({
+        entity,
+        data: values
+      })
   }
 
   const badgeData = useMemo(() => {
@@ -55,7 +86,7 @@ const useDetail = ({
 
   const onClickCustomAction = async (key) => {
     try {
-      const action = actions.find(i => i.key === key)
+      const action = customActions.find(i => i.key === key)
       if (!action) return
 
       const params = action.params({ values: getRequest.data })
@@ -67,16 +98,31 @@ const useDetail = ({
     }
   }
 
-  const filteredActions = useMemo(() => {
+  const onDelete = () => {
+    deleteRequest.run({
+      entity,
+      id: keyData
+    })
+  }
+
+  const filteredCustomActions = useMemo(() => {
     if (!getRequest.data) return []
 
-    return actions
+    return customActions
       .filter(i => i.conditions({ values: getRequest.data }))
 
   }, [getRequest.data])
 
+  const compiledActions = useMemo(() => {
+    if (!getRequest.data) return {}
+
+    return {
+      delete: actions.delete({ values: getRequest.data })
+    }
+  }, [getRequest.data])
+
   useEffect(() => {
-    if (keyData) {
+    if (keyData && keyData !== 'create') {
       getRequest.run({
         entity,
         id: keyData
@@ -86,12 +132,14 @@ const useDetail = ({
 
   return {
     form,
-    mode: keyData ? ActionMode.update : ActionMode.create,
+    mode: keyData && keyData !== 'create' ? ActionMode.update : ActionMode.create,
     badgeData,
-    actions: filteredActions,
+    actions: compiledActions,
+    customActions: filteredCustomActions,
     loading: getRequest.loading,
     data: getRequest.data,
     displayTitle: breadcrumb,
+    onDelete,
     onSubmit,
     onClickCustomAction
   }

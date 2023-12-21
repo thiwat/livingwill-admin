@@ -18,6 +18,14 @@ export const requestEntityRecord = async (
   return request(`v1/${entity}/${id}`, 'GET', undefined, headers)
 }
 
+export const requestCreateRecord = async (
+  entity: string,
+  body: any,
+  headers: object
+): Promise<unknown> => {
+  return request(`v1/${entity}`, 'POST', body, headers)
+}
+
 export const requestUpdateRecord = async (
   entity: string,
   id: string,
@@ -25,4 +33,12 @@ export const requestUpdateRecord = async (
   headers: object
 ): Promise<unknown> => {
   return request(`v1/${entity}/${id}`, 'PUT', body, headers)
+}
+
+export const requestDeleteRecord = async (
+  entity: string,
+  id: string,
+  headers: object
+): Promise<unknown> => {
+  return request(`v1/${entity}/${id}`, 'DELETE', {}, headers)
 }
