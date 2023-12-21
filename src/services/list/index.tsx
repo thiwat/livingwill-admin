@@ -6,12 +6,14 @@ import { useMemo, useRef, useState } from "react"
 import { ListServiceProps } from "./types"
 import { prepareListColumns } from '@/utils/list'
 import { getFromStorage, setToStorage } from '@/utils/storage'
+import { useRouter } from 'next/router'
 
 const useList = ({ entity, baseFilters, columns, rowKey }: ListServiceProps) => {
 
   const [data, setData] = useState<any[]>([])
   const pageInfo = useRef<any>({ page: 1, page_size: 10 })
   const keyword = useRef<string>(getFromStorage(entity, 'keyword'))
+  const router = useRouter()
 
   const delaySearch = useRef(_debounce((value) => {
     keyword.current = value
@@ -50,12 +52,17 @@ const useList = ({ entity, baseFilters, columns, rowKey }: ListServiceProps) => 
     refresh()
   }
 
+  const onCreate = () => {
+    router.push(`${router.pathname}/[key]`, `${router.pathname}/create`)
+  }
+
   return {
     data,
     loading,
     keyword: keyword.current,
     columns: processedColumns,
     onRefresh,
+    onCreate,
     onSearch
   }
 }

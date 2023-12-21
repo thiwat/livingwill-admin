@@ -8,34 +8,34 @@ import TimeStamp from "./TimeStamp"
 import { DetailProps } from "./types"
 import Section from '../Sections'
 import Form from '../Form'
+import CustomActions from './CustomActions'
+import DeleteButton from './DeleteButton'
 
 const Detail = ({
-  title,
   sections,
-  entity,
-  keyData,
-  badge
+  ...props
 }: DetailProps) => {
 
   const {
+    form,
     data,
+    actions,
+    customActions,
     badgeData,
     mode,
     loading,
     displayTitle,
-    onSubmit
-  } = useDetail({
-    entity,
-    keyData,
-    title,
-    badge
-  })
+    onSubmit,
+    onDelete,
+    onClickCustomAction
+  } = useDetail(props)
 
   if (loading) return null
 
   return (
     <Form
-      name={entity}
+      form={form}
+      name={props.entity}
       initialValues={data}
       onFinish={onSubmit}
     >
@@ -46,6 +46,16 @@ const Detail = ({
           <TimeStamp
             createdAt={_get(data, 'created_at')}
             updatedAt={_get(data, 'updated_at')}
+          />,
+          <CustomActions
+            actions={customActions}
+            onClick={onClickCustomAction}
+            mode={mode}
+          />,
+          <DeleteButton
+            actions={actions}
+            mode={mode}
+            onClick={onDelete}
           />,
           <Button
             type={'primary'}

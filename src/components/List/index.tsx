@@ -13,6 +13,7 @@ const List = (props: ListProps) => {
     keyword,
     columns,
     loading,
+    onCreate,
     onSearch,
     onRefresh
   } = useList(props)
@@ -34,7 +35,7 @@ const List = (props: ListProps) => {
             icon={<ReloadOutlined />}
             onClick={onRefresh}
           />
-          <Button type={'primary'}>
+          <Button type={'primary'} onClick={onCreate}>
             {t('common_table_create_button')}
           </Button>
         </Space>

@@ -43,7 +43,7 @@ const useMenu = () => {
 
   return {
     items,
-    defaultSelectedKeys: getDefaultSelectedKeys(),
+    selectedKeys: getDefaultSelectedKeys(),
     defaultOpenKeys: getDefaultOpenKeys(),
     onClick
   }

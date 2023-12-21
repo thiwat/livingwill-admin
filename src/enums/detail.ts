@@ -13,3 +13,7 @@ export enum ActionMode {
   create = 'create',
   update = 'update'
 }
+
+export enum AfterActionExecute {
+  update = 'update'
+}

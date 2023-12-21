@@ -6,7 +6,7 @@ import styles from './index.module.css'
 
 const Menu = () => {
 
-  const { items, defaultSelectedKeys, defaultOpenKeys, onClick } = useMenu()
+  const { items, selectedKeys, defaultOpenKeys, onClick } = useMenu()
 
   const menu = useMemo(() => {
     return items.map(i => {
@@ -22,7 +22,7 @@ const Menu = () => {
 
   return (
     <AntMenu
-      defaultSelectedKeys={defaultSelectedKeys}
+      selectedKeys={selectedKeys}
       defaultOpenKeys={defaultOpenKeys}
       items={menu}
       mode={'inline'}
