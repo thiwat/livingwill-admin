@@ -22,6 +22,7 @@ export type FieldItem = {
   type: DetailItemType;
   span?: number;
   dependenciesFields?: string[];
+  allowTranslate?: boolean;
   required?: boolean | FieldValueFunction;
   hidden?: boolean | FieldValueFunction;
   disabled?: boolean | FieldValueFunction;

@@ -11,5 +11,6 @@ export type FormItemByTypeProps = Overwrite<FormItemProps, {
   required?: boolean | FieldValueFunction;
   hidden?: boolean | FieldValueFunction;
   extraData: any;
-  options?: FieldItemOptions
+  options?: FieldItemOptions;
+  allowTranslate?: boolean;
 }>
