@@ -8,6 +8,7 @@ import { FormItemByTypeProps } from "./types"
 import { getItemProps } from '@/utils/form'
 import Select from '@/components/Select'
 import WysiwygEditor from '@/components/Wysiwyg'
+import TranslateModal from '@/components/TranslateModal'
 
 const FormItemByType = ({
   type,
@@ -19,6 +20,16 @@ const FormItemByType = ({
   const _renderItem = ({ disabled, ...props }) => {
 
     if (type === DetailItemType.string) {
+      if (props.allowTranslate) {
+        return (
+          <FormItem {...props}>
+            <Input
+              disabled={disabled}
+              addonAfter={<TranslateModal name={props.name} type={type} label={props.label} />}
+            />
+          </FormItem>
+        )
+      }
       return (
         <FormItem {...props}>
           <Input disabled={disabled} />
@@ -61,6 +72,20 @@ const FormItemByType = ({
       )
     }
     if (type === DetailItemType.wysiwyg) {
+      if (props.allowTranslate) {
+        return (
+          <>
+            <TranslateModal
+              name={props.name}
+              type={type}
+              label={props.label}
+            />
+            <FormItem {...props}>
+              <WysiwygEditor />
+            </FormItem>
+          </>
+        )
+      }
       return (
         <FormItem {...props}>
           <WysiwygEditor />

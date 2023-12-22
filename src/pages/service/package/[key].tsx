@@ -37,6 +37,7 @@ const SECTIONS: SectionProps[] = [
         name: 'name',
         type: DetailItemType.string,
         required: true,
+        allowTranslate: true
       },
       {
         label: 'package_code',
@@ -84,6 +85,7 @@ const SECTIONS: SectionProps[] = [
         name: 'detail',
         type: DetailItemType.wysiwyg,
         required: true,
+        allowTranslate: true,
         span: 24
       }
     ]

@@ -91,7 +91,8 @@ let TRANSLATES: object = {
   common_delete_title: 'Delete the record',
   common_delete_description: 'Are you sure to delete this record?',
   common_execute_action_success: 'Execute action successfully.',
-  application_action_revoke_secret: 'Revoke secret key'
+  application_action_revoke_secret: 'Revoke secret key',
+  common_translate_modal_title: 'Translate for ${ field }'
 }
 
 export const t = (key: string, data?: unknown): string => {
