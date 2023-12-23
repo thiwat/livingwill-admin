@@ -11,6 +11,9 @@ import { useRouter } from 'next/router';
 import { requestSiteSetting } from '@/apis/server/system';
 import { settingsAtom } from '@/atoms/settings';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import { PRIMARY_COLOR } from '@/constants/colors';
+import { requestGetTranslate } from '@/apis/server/setting';
+import { setTranslate } from '@/utils/translate';
 
 const NOT_REQUIRE_AUTH = ["/login"];
 
@@ -28,6 +31,10 @@ const MyApp = ({ Component, pageProps }) => {
 
     if (pageProps.settings) {
       siteSetting.current = pageProps.settings
+    }
+
+    if (pageProps.translates) {
+      setTranslate(pageProps.translates)
     }
 
     if (pageProps?.token && NOT_REQUIRE_AUTH.includes(router.pathname)) {
@@ -68,7 +75,7 @@ const MyApp = ({ Component, pageProps }) => {
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: '#9BBC4E',
+                  colorPrimary: PRIMARY_COLOR,
                   borderRadius: 0
                 }
               }}
@@ -99,6 +106,8 @@ MyApp.getInitialProps = async ({ ctx }) => {
       pageProps['token'] = accessToken
       pageProps['profile'] = profile
     }
+    const translates = await requestGetTranslate('admin', 'en-US', {})
+    pageProps['translates'] = translates
 
     const siteSettings = await requestSiteSetting()
     pageProps['settings'] = { ...siteSettings }
