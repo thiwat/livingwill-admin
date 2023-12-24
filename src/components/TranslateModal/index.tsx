@@ -40,7 +40,7 @@ const TranslateModal = ({
         onCancel={_toggleOpen}
         width={800}
         onOk={_toggleOpen}
-        bodyStyle={{ paddingTop: 0 }}
+        styles={{ body: { paddingTop: 0 } }}
       >
         <Tabs
           items={LANGUAGES.map(i => ({
