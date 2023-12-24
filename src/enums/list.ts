@@ -6,3 +6,11 @@ export enum ListItemType {
   boolean = 'boolean',
   number = 'number'
 }
+
+
+export enum FilterItemType {
+  string = 'string',
+  date = 'date',
+  options = 'options',
+  boolean = 'boolean'
+}

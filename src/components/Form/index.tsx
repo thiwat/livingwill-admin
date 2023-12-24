@@ -4,9 +4,9 @@ import { FormProps } from './types'
 const Form = ({ children, ...props }: FormProps) => {
   return (
     <AntForm
-      {...props}
       requiredMark={'optional'}
       layout={'vertical'}
+      {...props}
     >
       {children}
     </AntForm>

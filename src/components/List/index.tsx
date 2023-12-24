@@ -12,9 +12,11 @@ const List = (props: ListProps) => {
     data,
     keyword,
     columns,
+    filters,
     loading,
     onCreate,
     onSearch,
+    onFilter,
     onRefresh
   } = useList(props)
 
@@ -29,7 +31,11 @@ const List = (props: ListProps) => {
             onChange={onSearch}
           />
         </Col>
-        <Filters />
+        <Filters
+          fields={props.filters}
+          value={filters}
+          onChange={onFilter}
+        />
         <Space className={styles.rightActions}>
           <Button
             icon={<ReloadOutlined />}
