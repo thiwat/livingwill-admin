@@ -13,7 +13,7 @@ export type FieldItemOption = {
 
 export type FieldItemOptions = {
   options?: FieldItemOption[],
-  multiple?: boolean;
+  mode?: 'multiple' | 'tags';
 }
 
 export type FieldItem = {

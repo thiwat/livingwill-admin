@@ -6,7 +6,8 @@ export enum DetailItemType {
   datetime = 'datetime',
   select = 'select',
   wysiwyg = 'wysiwyg',
-  number = 'number'
+  number = 'number',
+  json = 'json'
 }
 
 export enum ActionMode {

@@ -9,6 +9,7 @@ import { getItemProps } from '@/utils/form'
 import Select from '@/components/Select'
 import WysiwygEditor from '@/components/Wysiwyg'
 import TranslateModal from '@/components/TranslateModal'
+import Editor from '@/components/Editer'
 
 const FormItemByType = ({
   type,
@@ -68,6 +69,13 @@ const FormItemByType = ({
       return (
         <FormItem {...props}>
           <DatePicker disabled={disabled} />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.json) {
+      return (
+        <FormItem {...props}>
+          <Editor />
         </FormItem>
       )
     }

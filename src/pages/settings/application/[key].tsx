@@ -90,7 +90,7 @@ const SECTIONS: SectionProps[] = [
         name: 'roles',
         type: DetailItemType.select,
         options: {
-          multiple: true,
+          mode: 'multiple',
           options: [
             { label: 'user_role_admin', value: 'admin' },
             { label: 'user_role_customer', value: 'customer' },
