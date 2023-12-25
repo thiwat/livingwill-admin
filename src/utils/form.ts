@@ -17,6 +17,7 @@ export const getItemProps = (props, extra) => {
   const temp = _cloneDeep(props)
   temp['required'] = executeBooleanValue(temp.required, extra)
   temp['disabled'] = executeBooleanValue(temp.disabled, extra)
+  temp['hidden'] = executeBooleanValue(temp.hidden, extra)
 
   if (temp.dependenciesFields) {
     temp['dependencies'] = temp.dependenciesFields
