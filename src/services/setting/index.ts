@@ -1,8 +1,9 @@
 import { requestGetSetting, requestSetSetting } from "@/apis/client/setting"
-import { prepareDataBeforeSave } from "@/utils/form"
+import { prepareInitialData, prepareDataBeforeSave } from "@/utils/form"
 import { t } from "@/utils/translate"
 import { useRequest } from "ahooks"
 import { message } from 'antd'
+import { useMemo } from "react"
 import { SettingServiceProps } from "./types"
 
 const useSetting = ({ name, sections }: SettingServiceProps) => {
@@ -22,6 +23,13 @@ const useSetting = ({ name, sections }: SettingServiceProps) => {
     }
   })
 
+  const initialData = useMemo(() => {
+    if (!getSettingRequest.data) return getSettingRequest.data
+
+    return prepareInitialData(getSettingRequest.data, sections)
+
+  }, [getSettingRequest.data])
+
   const onSave = (data) => {
     setSettingRequest.run({
       name,
@@ -30,7 +38,7 @@ const useSetting = ({ name, sections }: SettingServiceProps) => {
   }
 
   return {
-    data: getSettingRequest.data,
+    data: initialData,
     loading: getSettingRequest.loading,
     isSaving: setSettingRequest.loading,
     onSave
