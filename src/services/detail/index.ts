@@ -11,13 +11,14 @@ import { message, Form as AntForm } from 'antd'
 import { useRouter } from 'next/router'
 import { usePathname } from 'next/navigation'
 import { Entity } from '@/enums/entity'
-import { executeBooleanValue } from '@/utils/form'
+import { executeBooleanValue, prepareInitialData } from '@/utils/form'
 
 const useDetail = ({
   badge,
   title,
   entity,
   actions,
+  sections,
   customActions,
   keyData
 }: DetailServiceProps) => {
@@ -85,6 +86,12 @@ const useDetail = ({
     }
   }, [getRequest.data])
 
+  const initialData = useMemo(() => {
+    if (!getRequest.data) return getRequest.data
+
+    return prepareInitialData(getRequest.data, sections)
+  }, [getRequest.data])
+
   const onClickCustomAction = async (key) => {
     try {
       const action = customActions.find(i => i.key === key)
@@ -142,7 +149,7 @@ const useDetail = ({
     actions: compiledActions,
     customActions: filteredCustomActions,
     loading: getRequest.loading,
-    data: getRequest.data,
+    data: initialData,
     displayTitle: breadcrumb,
     onDelete,
     onSubmit,

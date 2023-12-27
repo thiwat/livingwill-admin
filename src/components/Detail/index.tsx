@@ -11,10 +11,7 @@ import Form from '../Form'
 import CustomActions from './CustomActions'
 import DeleteButton from './DeleteButton'
 
-const Detail = ({
-  sections,
-  ...props
-}: DetailProps) => {
+const Detail = (props: DetailProps) => {
 
   const {
     form,
@@ -65,7 +62,7 @@ const Detail = ({
           </Button>
         ]}
       />
-      {sections.map((i, index) => (
+      {props.sections.map((i, index) => (
         <Section
           key={`section-${index}`}
           extraData={{
