@@ -79,12 +79,12 @@ export const MENU = [
         key: '/settings/attachment'
       },
       {
-        label: 'menu_settings_security',
-        key: '/settings/security'
+        label: 'menu_settings_authentication',
+        key: '/settings/authen'
       },
       {
-        label: 'menu_settings_authen',
-        key: '/settings/authen'
+        label: 'menu_settings_security',
+        key: '/settings/security'
       },
       {
         label: 'menu_settings_footer',

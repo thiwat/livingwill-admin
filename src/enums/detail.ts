@@ -1,7 +1,8 @@
 export enum DetailItemType {
+  boolean = 'boolean',
+  checkbox = 'checkbox',
   space = 'space',
   string = 'string',
-  boolean = 'boolean',
   password = 'password',
   datetime = 'datetime',
   select = 'select',

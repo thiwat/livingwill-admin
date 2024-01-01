@@ -9,7 +9,7 @@ const Select = ({ options, disabled, value, onChange }: SelectProps) => {
       disabled={disabled}
       mode={options.mode ? options.mode : undefined}
       onChange={onChange}
-      options={options.options.map(i => ({
+      options={options.options?.map(i => ({
         label: t(i.label),
         value: i.value
       }))}
