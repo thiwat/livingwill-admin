@@ -2,7 +2,7 @@ import _get from 'lodash/get'
 import _isEmpty from 'lodash/isEmpty'
 import _cloneDeep from 'lodash/cloneDeep'
 import { DetailItemType } from "@/enums/detail"
-import { DatePicker, Input, Switch } from "antd"
+import { Checkbox, DatePicker, Input, Switch } from "antd"
 import { FormItem } from ".."
 import { FormItemByTypeProps } from "./types"
 import { getItemProps } from '@/utils/form'
@@ -40,7 +40,7 @@ const FormItemByType = ({
     if (type === DetailItemType.number) {
       return (
         <FormItem {...props}>
-          <Input type={'number'} disabled={disabled} />
+          <Input type={'number'} disabled={disabled} suffix={options?.suffix} />
         </FormItem>
       )
     }
@@ -55,6 +55,13 @@ const FormItemByType = ({
       return (
         <FormItem {...props}>
           <Input.Password disabled={disabled} />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.checkbox) {
+      return (
+        <FormItem {...props}>
+          <Checkbox.Group options={options.options} />
         </FormItem>
       )
     }

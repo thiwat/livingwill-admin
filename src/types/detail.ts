@@ -14,6 +14,7 @@ export type FieldItemOption = {
 export type FieldItemOptions = {
   options?: FieldItemOption[],
   mode?: 'multiple' | 'tags';
+  suffix?: string;
 }
 
 export type FieldItem = {
