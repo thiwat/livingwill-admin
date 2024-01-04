@@ -2,12 +2,21 @@ import { request } from "../request";
 import { ListQueryInput } from "./types";
 import queryString from 'query-string'
 
+const MAP_ENTITY = {
+  cms_block: 'cms/block',
+  cms_page: 'cms/page'
+}
+
+const mapEntityName = (entity) => {
+  return MAP_ENTITY[entity] || entity
+}
+
 export const requestList = async (
   entity: string,
   query: ListQueryInput,
   headers: object
 ): Promise<unknown> => {
-  return request(`v1/${entity}?${queryString.stringify(query)}`, 'GET', undefined, headers)
+  return request(`v1/${mapEntityName(entity)}?${queryString.stringify(query)}`, 'GET', undefined, headers)
 }
 
 export const requestEntityRecord = async (
@@ -15,7 +24,7 @@ export const requestEntityRecord = async (
   id: string,
   headers: object
 ): Promise<unknown> => {
-  return request(`v1/${entity}/${id}`, 'GET', undefined, headers)
+  return request(`v1/${mapEntityName(entity)}/${id}`, 'GET', undefined, headers)
 }
 
 export const requestCreateRecord = async (
@@ -23,7 +32,7 @@ export const requestCreateRecord = async (
   body: any,
   headers: object
 ): Promise<unknown> => {
-  return request(`v1/${entity}`, 'POST', body, headers)
+  return request(`v1/${mapEntityName(entity)}`, 'POST', body, headers)
 }
 
 export const requestUpdateRecord = async (
@@ -32,7 +41,7 @@ export const requestUpdateRecord = async (
   body: any,
   headers: object
 ): Promise<unknown> => {
-  return request(`v1/${entity}/${id}`, 'PUT', body, headers)
+  return request(`v1/${mapEntityName(entity)}/${id}`, 'PUT', body, headers)
 }
 
 export const requestDeleteRecord = async (
@@ -40,5 +49,5 @@ export const requestDeleteRecord = async (
   id: string,
   headers: object
 ): Promise<unknown> => {
-  return request(`v1/${entity}/${id}`, 'DELETE', {}, headers)
+  return request(`v1/${mapEntityName(entity)}/${id}`, 'DELETE', {}, headers)
 }

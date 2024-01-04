@@ -52,12 +52,12 @@ export const MENU = [
         key: '/content/blog',
       },
       {
-        label: 'menu_cms_page',
-        key: '/content/cms_page',
-      },
-      {
         label: 'menu_cms_block',
         key: '/content/cms_block'
+      },
+      {
+        label: 'menu_cms_page',
+        key: '/content/cms_page',
       },
       {
         label: 'menu_notification_template',

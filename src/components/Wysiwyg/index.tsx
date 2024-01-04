@@ -1,3 +1,5 @@
+import { cookies } from '@/utils/cookies'
+import { getBase64FromFile } from '@/utils/file'
 import { message } from 'antd'
 import dynamic from 'next/dynamic'
 import { useMemo, useRef } from 'react'
@@ -29,21 +31,23 @@ const WysiwygEditor = ({
       readonly: disabled,
       uploader: {
         url: '/api/attachment/upload',
+        headers: {
+          Authorization: `Bearer ${cookies.get('token')}`
+        },
         isSuccess: (res) => {
           return !!res?.url;
         },
         defaultHandlerSuccess: function (data, res) {
           this.s.insertImage(data.url)
         },
-        buildData: (data) => {
+        buildData: async (data) => {
           const file = data.getAll('files[0]')[0]
-
-          // const form = new FormData()
-          // form.append('file', file, file.name)
-          // form.append('size', file.size / 1e6)
-          // form.append('path', 'wysiwyg')
-
-          // return form
+          const uploadData = await getBase64FromFile(file)
+          return {
+            file_name: file.name,
+            path: 'image',
+            image_data: uploadData
+          }
         },
         process: (res) => {
           return {

@@ -35,6 +35,9 @@ export const prepareInitialData = (data: any, sections: SectionProps[]) => {
     if (field.type === DetailItemType.json && _get(data, field.name)) {
       _set(cloneData, field.name, JSON.stringify(_get(data, field.name), null, 2))
     }
+    if (field.type === DetailItemType.boolean) {
+      _set(cloneData, field.name, _get(cloneData, field.name) ?? false)
+    }
   }
   return cloneData
 }
