@@ -42,7 +42,8 @@ const SECTIONS: SectionProps[] = [
         label: 'application_enabled',
         name: 'enabled',
         type: DetailItemType.boolean,
-        required: true
+        required: true,
+        disabled: ({ mode }) => mode === ActionMode.update
       },
       {
         type: DetailItemType.space,
