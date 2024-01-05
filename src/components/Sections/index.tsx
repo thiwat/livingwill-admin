@@ -7,10 +7,11 @@ import styles from './index.module.css'
 const Section = ({
   title,
   fields,
+  noStyle,
   extraData
 }: SectionProps) => {
   return (
-    <div className={styles.container}>
+    <div className={noStyle ? styles.plainContainer : styles.container}>
       {!!title &&
         <h3 className={styles.title}>
           {t(title)}

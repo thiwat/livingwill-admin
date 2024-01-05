@@ -11,6 +11,7 @@ import WysiwygEditor from '@/components/Wysiwyg'
 import TranslateModal from '@/components/TranslateModal'
 import Editor from '@/components/Editer'
 import Attachment from '@/components/Attachment'
+import AddableList from '@/components/AddableList'
 
 const FormItemByType = ({
   type,
@@ -77,6 +78,18 @@ const FormItemByType = ({
       return (
         <FormItem {...props}>
           <DatePicker disabled={disabled} />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.addable) {
+      return (
+        <FormItem {...props}>
+          <AddableList
+            detailLayout={options.detailLayout}
+            listLayout={options.listLayout}
+            allowDrag={options.allowDrag}
+            disabled={disabled}
+          />
         </FormItem>
       )
     }

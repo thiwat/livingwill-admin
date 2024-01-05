@@ -8,7 +8,11 @@ import { t } from './translate';
 import { Tag } from 'antd';
 
 
-export const prepareListColumns = (columns: ListItemProps[], key: string) => {
+export const prepareListColumns = (
+  columns: ListItemProps[],
+  key: string,
+  onClick?: (key: string) => void
+) => {
   const cols = _cloneDeep(columns)
   cols.push({
     dataIndex: key,
@@ -16,7 +20,10 @@ export const prepareListColumns = (columns: ListItemProps[], key: string) => {
     width: 50,
     align: 'right',
     fiexed: 'right',
-    type: ListItemType.action
+    type: ListItemType.action,
+    options: {
+      onClick
+    }
   })
 
   for (const col of cols) {
@@ -45,8 +52,10 @@ const _renderByType = (type: ListItemType, options?: ListItemOptionProps) => {
       return _renderBadge(options)
     case ListItemType.boolean:
       return _renderBoolean
+    case ListItemType.image:
+      return _renderImage
     case ListItemType.action:
-      return rowId => <ListActions rowId={rowId} />
+      return (rowId, record, index) => <ListActions rowId={rowId} index={index} onClick={options['onClick']} />
     default:
       return undefined
   }
@@ -80,4 +89,14 @@ const _renderBadge = (options: ListItemOptionProps) => (value: string) => {
       {t(`${options.prefixTranslate}${value}`)}
     </Tag>
   )
+}
+
+const _renderImage = (value: any) => {
+
+  const src = value
+    ? value.image_data || value
+    : '/images/default-file.png'
+
+  return <img style={{ height: 50, width: 50 }} src={src} />
+
 }
