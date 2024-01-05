@@ -11,7 +11,7 @@ import { message, Form as AntForm } from 'antd'
 import { useRouter } from 'next/router'
 import { usePathname } from 'next/navigation'
 import { Entity } from '@/enums/entity'
-import { executeBooleanValue, prepareInitialData } from '@/utils/form'
+import { executeBooleanValue, prepareDataBeforeSave, prepareInitialData } from '@/utils/form'
 
 const useDetail = ({
   badge,
@@ -65,16 +65,16 @@ const useDetail = ({
     }
   })
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     keyData && keyData !== 'create'
       ? updateRequest.run({
         entity,
         id: keyData,
-        data: values
+        data: await prepareDataBeforeSave(values, sections)
       })
       : createRequset.run({
         entity,
-        data: values
+        data: await prepareDataBeforeSave(values, sections)
       })
   }
 

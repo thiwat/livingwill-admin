@@ -8,7 +8,8 @@ export enum DetailItemType {
   select = 'select',
   wysiwyg = 'wysiwyg',
   number = 'number',
-  json = 'json'
+  json = 'json',
+  attachment = 'attachment'
 }
 
 export enum ActionMode {
