@@ -10,6 +10,7 @@ import Select from '@/components/Select'
 import WysiwygEditor from '@/components/Wysiwyg'
 import TranslateModal from '@/components/TranslateModal'
 import Editor from '@/components/Editer'
+import Attachment from '@/components/Attachment'
 
 const FormItemByType = ({
   type,
@@ -83,6 +84,16 @@ const FormItemByType = ({
       return (
         <FormItem {...props}>
           <Editor />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.attachment) {
+      return (
+        <FormItem {...props}>
+          <Attachment
+            disabled={disabled}
+            accept={options.accept}
+          />
         </FormItem>
       )
     }

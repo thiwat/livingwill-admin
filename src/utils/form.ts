@@ -5,6 +5,7 @@ import _flattenDeep from 'lodash/flattenDeep'
 import _get from 'lodash/get'
 import _set from 'lodash/set'
 import _isString from 'lodash/isString'
+import { requestUploadAttachment } from '@/apis/client/attachment'
 
 export const executeBooleanValue = (value: boolean | FieldValueFunction, extra): boolean => {
   if (typeof value === 'function') {
@@ -43,11 +44,12 @@ export const prepareInitialData = (data: any, sections: SectionProps[]) => {
 }
 
 
-export const prepareDataBeforeSave = (data: any, sections: SectionProps[]): any => {
+export const prepareDataBeforeSave = async (data: any, sections: SectionProps[]): Promise<any> => {
   const cloneData = _cloneDeep(data)
   const fields: FieldItem[] = _flattenDeep([...sections.map(i => i.fields)])
 
   for (const field of fields) {
+    const fieldData = _get(data, field.name)
     if (field.type === DetailItemType.number) {
       if (_get(data, field.name)) {
         _set(cloneData, field.name, +_get(data, field.name))
@@ -55,6 +57,14 @@ export const prepareDataBeforeSave = (data: any, sections: SectionProps[]): any 
     }
     if (field.type === DetailItemType.json && _isString(_get(data, field.name))) {
       _set(cloneData, field.name, JSON.parse(_get(data, field.name)))
+    }
+    if (field.type === 'attachment' && _get(fieldData, `image_data`)) {
+      const { url } = await requestUploadAttachment({
+        file_name: fieldData['name'],
+        path: field.options.path,
+        image_data: fieldData['image_data']
+      })
+      _set(cloneData, field.name, url)
     }
   }
 

@@ -71,6 +71,18 @@ const SECTIONS: SectionProps[] = [
         }
       },
       {
+        label: 'cms_block_image',
+        name: ['content', 'image_url'],
+        type: DetailItemType.attachment,
+        dependenciesFields: ['type'],
+        hidden: ({ values }) => values?.type !== CmsBlockType.image,
+        required: ({ values }) => values?.type === CmsBlockType.image,
+        options: {
+          path: 'cms_block',
+          accept: 'image/*'
+        }
+      },
+      {
         label: 'cms_block_html',
         name: ['content', 'html'],
         type: DetailItemType.wysiwyg,
@@ -78,7 +90,7 @@ const SECTIONS: SectionProps[] = [
         hidden: ({ values }) => values?.type !== CmsBlockType.html,
         required: ({ values }) => values?.type === CmsBlockType.html,
         span: 24
-      },
+      }
     ]
   }
 ]

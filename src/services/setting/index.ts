@@ -30,10 +30,10 @@ const useSetting = ({ name, sections }: SettingServiceProps) => {
 
   }, [getSettingRequest.data])
 
-  const onSave = (data) => {
+  const onSave = async (data) => {
     setSettingRequest.run({
       name,
-      data: prepareDataBeforeSave(data, sections)
+      data: await prepareDataBeforeSave(data, sections)
     })
   }
 
