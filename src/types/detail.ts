@@ -1,4 +1,5 @@
 import { ActionMode, AfterActionExecute, DetailItemType } from "@/enums/detail"
+import { Entity } from "@/enums/entity";
 import { ListItemProps } from "./list";
 
 export type FieldValueFunction = ({ values, mode }: { values: any, mode: ActionMode }) => boolean
@@ -14,6 +15,9 @@ export type FieldItemOption = {
 
 export type FieldItemOptions = {
   options?: FieldItemOption[],
+  entity?: Entity;
+  label?: string;
+  value?: string;
   mode?: 'multiple' | 'tags';
   suffix?: string;
   path?: string;

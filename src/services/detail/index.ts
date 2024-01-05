@@ -42,6 +42,9 @@ const useDetail = ({
     manual: true,
     onSuccess: (r) => {
       message.success(t('common_update_success'))
+    },
+    onError: (e) => {
+      message.error(e.message)
     }
   })
 
@@ -54,6 +57,9 @@ const useDetail = ({
         : 'code'
       message.success('common_create_success')
       router.replace(`${path}/[key]`, `${path}/${_get(r, key)}`)
+    },
+    onError: (e) => {
+      message.error(e.message)
     }
   })
 
