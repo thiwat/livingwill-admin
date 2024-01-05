@@ -4,7 +4,8 @@ export enum ListItemType {
   badge = 'badge',
   action = 'action',
   boolean = 'boolean',
-  number = 'number'
+  number = 'number',
+  image = 'image'
 }
 
 

@@ -1,3 +1,5 @@
 export type ListActionsProps = {
-  rowId: string
+  rowId: string;
+  index?: number;
+  onClick?: (index: number) => void;
 }

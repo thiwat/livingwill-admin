@@ -9,7 +9,8 @@ export enum DetailItemType {
   wysiwyg = 'wysiwyg',
   number = 'number',
   json = 'json',
-  attachment = 'attachment'
+  attachment = 'attachment',
+  addable = 'addable'
 }
 
 export enum ActionMode {

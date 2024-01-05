@@ -49,7 +49,7 @@ export const prepareDataBeforeSave = async (data: any, sections: SectionProps[])
   const fields: FieldItem[] = _flattenDeep([...sections.map(i => i.fields)])
 
   for (const field of fields) {
-    const fieldData = _get(data, field.name)
+    const fieldData = _get(cloneData, field.name)
     if (field.type === DetailItemType.number) {
       if (_get(data, field.name)) {
         _set(cloneData, field.name, +_get(data, field.name))
@@ -58,13 +58,18 @@ export const prepareDataBeforeSave = async (data: any, sections: SectionProps[])
     if (field.type === DetailItemType.json && _isString(_get(data, field.name))) {
       _set(cloneData, field.name, JSON.parse(_get(data, field.name)))
     }
-    if (field.type === 'attachment' && _get(fieldData, `image_data`)) {
+    if (field.type === DetailItemType.attachment && _get(fieldData, `image_data`)) {
       const { url } = await requestUploadAttachment({
         file_name: fieldData['name'],
         path: field.options.path,
         image_data: fieldData['image_data']
       })
       _set(cloneData, field.name, url)
+    }
+    if (field.type === DetailItemType.addable) {
+      for (const [index, item] of Object.entries(fieldData)) {
+        fieldData[index] = await prepareDataBeforeSave(item, field.options.detailLayout)
+      }
     }
   }
 

@@ -87,7 +87,11 @@ const Attachment = ({
       {fileUrl
         ? <div className={styles.container}>
           <img
-            src={_get(fileUrl, 'data') as string || fileUrl as string}
+            src={
+              _get(fileUrl, 'data') as string
+              || _get(fileUrl, 'image_data') as string
+              || fileUrl as string
+            }
             alt="avatar"
             onError={_onLoadImgError}
             className={styles.img}

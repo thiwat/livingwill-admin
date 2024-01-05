@@ -1,4 +1,5 @@
 import { ActionMode, AfterActionExecute, DetailItemType } from "@/enums/detail"
+import { ListItemProps } from "./list";
 
 export type FieldValueFunction = ({ values, mode }: { values: any, mode: ActionMode }) => boolean
 
@@ -17,6 +18,10 @@ export type FieldItemOptions = {
   suffix?: string;
   path?: string;
   accept?: string;
+  allowDrag?: boolean;
+  rowKey?: string;
+  detailLayout?: SectionProps[];
+  listLayout?: ListItemProps[]
 }
 
 export type FieldItem = {
@@ -36,6 +41,7 @@ export type SectionProps = {
   title?: string;
   fields: FieldItem[];
   extraData?: object;
+  noStyle?: boolean;
 }
 
 export type DetailBadgeProps = {
