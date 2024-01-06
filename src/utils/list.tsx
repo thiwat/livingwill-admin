@@ -4,6 +4,7 @@ import { ListItemOptionProps, ListItemProps } from '@/types/list'
 import { ListItemType } from "@/enums/list";
 import { formatDateTime } from '@/utils/date'
 import ListActions from '@/components/List/Actions';
+import { HolderOutlined } from '@ant-design/icons'
 import { t } from './translate';
 import { Tag } from 'antd';
 
@@ -11,9 +12,16 @@ import { Tag } from 'antd';
 export const prepareListColumns = (
   columns: ListItemProps[],
   key: string,
-  onClick?: (key: string) => void
+  allowDrag?: boolean,
+  onClick?: (key: string) => void,
 ) => {
   const cols = _cloneDeep(columns)
+  if (allowDrag)
+    cols.unshift({
+      dataIndex: key,
+      width: 40,
+      type: ListItemType.drag
+    })
   cols.push({
     dataIndex: key,
     key,
@@ -54,6 +62,8 @@ const _renderByType = (type: ListItemType, options?: ListItemOptionProps) => {
       return _renderBoolean
     case ListItemType.image:
       return _renderImage
+    case ListItemType.drag:
+      return _renderDrag
     case ListItemType.action:
       return (rowId, record, index) => <ListActions rowId={rowId} index={index} onClick={options['onClick']} />
     default:
@@ -98,5 +108,10 @@ const _renderImage = (value: any) => {
     : '/images/default-file.png'
 
   return <img style={{ height: 50, width: 50 }} src={src} />
+}
 
+const _renderDrag = () => {
+  return (
+    <HolderOutlined />
+  )
 }
