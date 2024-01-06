@@ -5,7 +5,8 @@ export enum ListItemType {
   action = 'action',
   boolean = 'boolean',
   number = 'number',
-  image = 'image'
+  image = 'image',
+  drag = 'drag'
 }
 
 

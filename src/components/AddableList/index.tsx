@@ -83,7 +83,7 @@ const AddableList = ({
           <Table
             rowKey={rowKey || 'key'}
             dataSource={value || []}
-            columns={prepareListColumns(listLayout, rowKey || 'key', _onEdit)}
+            columns={prepareListColumns(listLayout, rowKey || 'key', allowDrag, _onEdit,)}
             pagination={allowDrag ? false : undefined}
           />
         </ReactDragListView>
