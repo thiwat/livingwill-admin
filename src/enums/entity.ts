@@ -1,7 +1,8 @@
 export enum Entity {
-  user = 'user',
-  package = 'package',
   application = 'application',
+  blog = 'blog',
   cms_block = 'cms_block',
-  cms_page = 'cms_page'
+  cms_page = 'cms_page',
+  package = 'package',
+  user = 'user',
 }
