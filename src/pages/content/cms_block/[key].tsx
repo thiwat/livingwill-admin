@@ -1,5 +1,5 @@
 import Detail from "@/components/Detail"
-import { CmsBlockType } from "@/enums/cms"
+import { BlogSortBy, CmsBlockType } from "@/enums/cms"
 import { DetailItemType } from "@/enums/detail"
 import { Entity } from "@/enums/entity"
 import { ListItemType } from "@/enums/list"
@@ -71,7 +71,33 @@ const SECTIONS: SectionProps[] = [
           }))
         }
       },
-
+      {
+        type: DetailItemType.space
+      },
+      {
+        label: 'cms_block_sort_by',
+        name: ['content', 'sort_by'],
+        type: DetailItemType.select,
+        dependenciesFields: ['type'],
+        hidden: ({ values }) => values?.type !== CmsBlockType.blog,
+        required: ({ values }) => values?.type === CmsBlockType.blog,
+        options: {
+          options: Object.values(BlogSortBy).map(i => ({
+            label: t(`cms_block_sort_by_${i}`),
+            value: i
+          }))
+        }
+      },
+      {
+        label: 'cms_block_tags',
+        name: ['content', 'tags'],
+        type: DetailItemType.select,
+        dependenciesFields: ['type'],
+        hidden: ({ values }) => values?.type !== CmsBlockType.blog,
+        options: {
+          mode: 'tags'
+        }
+      },
       {
         label: 'cms_block_image',
         name: ['content', 'image', 'url'],

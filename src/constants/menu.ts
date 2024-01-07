@@ -5,27 +5,9 @@ export const MENU = [
     icon: 'HomeOutlined'
   },
   {
-    label: 'menu_audience',
-    key: '/audience',
-    icon: 'UserOutlined',
-    children: [
-      {
-        label: 'menu_users',
-        key: '/audience/user',
-      },
-      {
-        label: 'menu_customers',
-        key: '/audience/customer',
-      },
-      {
-        label: 'menu_lawyers',
-        key: '/audience/lawyer'
-      },
-      {
-        label: 'menu_web_masters',
-        key: '/audience/web_master',
-      }
-    ]
+    label: 'menu_customers',
+    key: '/customer',
+    icon: 'UserOutlined'
   },
   {
     label: 'menu_services',
@@ -64,6 +46,11 @@ export const MENU = [
         key: '/content/notification_template',
       },
     ]
+  },
+  {
+    label: 'menu_staffs',
+    key: '/staff',
+    icon: 'TeamOutlined',
   },
   {
     label: 'menu_settings',

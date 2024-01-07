@@ -1,5 +1,11 @@
 export enum CmsBlockType {
+  blog = 'blog',
   carousel = 'carousel',
+  html = 'html',
   image = 'image',
-  html = 'html'
+}
+
+export enum BlogSortBy {
+  newest = 'newest',
+  recommend = 'recommend'
 }

@@ -13,7 +13,7 @@ const UserPage = () => {
       entity={Entity.user}
       columns={COLUMNS}
       rowKey={'user_id'}
-      baseFilters={{ role: Roles.admin }}
+      baseFilters={{ role: { $in: [Roles.admin, Roles.lawyer, Roles.web_master] } }}
       filters={FILTERS}
     />
   )
@@ -46,6 +46,15 @@ const COLUMNS: ListItemProps[] = [
     options: {
       mapColors: USER_STATE_COLORS,
       prefixTranslate: 'user_state_'
+    }
+  },
+  {
+    type: ListItemType.badge,
+    title: 'user_role',
+    dataIndex: 'role',
+    key: 'role',
+    options: {
+      prefixTranslate: 'user_role_'
     }
   },
   {
