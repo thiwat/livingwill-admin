@@ -67,7 +67,7 @@ export const prepareDataBeforeSave = async (data: any, sections: SectionProps[])
       _set(cloneData, field.name, url)
     }
     if (field.type === DetailItemType.addable) {
-      for (const [index, item] of Object.entries(fieldData)) {
+      for (const [index, item] of Object.entries(fieldData || [])) {
         fieldData[index] = await prepareDataBeforeSave(item, field.options.detailLayout)
       }
     }

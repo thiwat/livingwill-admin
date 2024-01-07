@@ -81,6 +81,12 @@ const SECTIONS: SectionProps[] = [
         }
       },
       {
+        label: 'blog_position',
+        name: 'position',
+        type: DetailItemType.number,
+        required: true,
+      },
+      {
         label: 'blog_content',
         name: 'content',
         type: DetailItemType.wysiwyg,
