@@ -1,5 +1,12 @@
 import { request } from "../request"
-import { RequestCreateProps, RequestDeleteProps, RequestDetailProps, RequestListProps, RequestUpdateProps } from "./types"
+import {
+  RequestCreateProps,
+  RequestDeleteProps,
+  RequestDetailProps,
+  RequestEntityTagsProps,
+  RequestListProps,
+  RequestUpdateProps
+} from "./types"
 import { buildQuery } from "@/utils/request"
 
 export const requestList = ({ entity, ...other }: RequestListProps): Promise<unknown> => {
@@ -20,4 +27,8 @@ export const requestUpdate = ({ entity, id, data }: RequestUpdateProps): Promise
 
 export const requestDelete = ({ entity, id }: RequestDeleteProps): Promise<object> => {
   return request(`/entity/${entity}/${id}`, 'DELETE', {})
+}
+
+export const requestEntityTags = ({ entity }: RequestEntityTagsProps): Promise<object> => {
+  return request(`/entity/${entity}/tags`, 'GET')
 }

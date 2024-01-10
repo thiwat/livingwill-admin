@@ -1,8 +1,10 @@
 import List from "@/components/List"
+import { FilterField } from "@/components/List/Filters/types"
 import { USER_STATE_COLORS } from "@/constants/colors"
 import { Entity } from "@/enums/entity"
-import { ListItemType } from "@/enums/list"
+import { FilterItemType, ListItemType } from "@/enums/list"
 import { Roles } from "@/enums/role"
+import { UserState } from "@/enums/user"
 import { ListItemProps } from "@/types/list"
 
 const CustomerPage = () => {
@@ -10,6 +12,7 @@ const CustomerPage = () => {
     <List
       entity={Entity.user}
       columns={COLUMNS}
+      filters={FILTERS}
       rowKey={'user_id'}
       baseFilters={{ role: Roles.customer }}
     />
@@ -51,6 +54,18 @@ const COLUMNS: ListItemProps[] = [
     dataIndex: 'last_logged_in_at',
     key: 'last_logged_in_at'
   },
+]
+
+const FILTERS: FilterField[] = [
+  {
+    label: 'user_state',
+    name: 'state',
+    type: FilterItemType.options,
+    options: Object.values(UserState).map(i => ({
+      label: `user_state_${i}`,
+      value: i
+    }))
+  }
 ]
 
 export default CustomerPage

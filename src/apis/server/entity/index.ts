@@ -51,3 +51,10 @@ export const requestDeleteRecord = async (
 ): Promise<unknown> => {
   return request(`v1/${mapEntityName(entity)}/${id}`, 'DELETE', {}, headers)
 }
+
+export const requestEntityTags = async (
+  entity: string,
+  headers: object
+): Promise<unknown> => {
+  return request(`v1/${mapEntityName(entity)}/tags`, 'GET', undefined, headers)
+}
