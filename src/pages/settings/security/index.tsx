@@ -17,15 +17,6 @@ const SECTIONS: SectionProps[] = [
     title: 'setting_security_recaptcha',
     fields: [
       {
-        name: ['recaptcha', 'enabled'],
-        label: 'setting_security_recaptcha_enable',
-        type: DetailItemType.boolean,
-        required: true
-      },
-      {
-        type: DetailItemType.space
-      },
-      {
         name: ['recaptcha', 'site_key'],
         label: 'setting_security_recaptcha_site_key',
         type: DetailItemType.string,
