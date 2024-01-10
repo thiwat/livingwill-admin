@@ -98,8 +98,13 @@ const SECTIONS: SectionProps[] = [
             { label: 'user_role_lawyer', value: 'lawyer' },
             { label: 'user_role_web_master', value: 'web_master' },
           ]
-        }
-      }
+        },
+      },
+      {
+        label: 'application_use_recaptcha',
+        name: 'use_recaptcha',
+        type: DetailItemType.boolean,
+      },
     ]
   }
 ]
