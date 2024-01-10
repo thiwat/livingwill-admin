@@ -28,3 +28,7 @@ export type RequestDeleteProps = {
   entity: Entity,
   id: string,
 }
+
+export type RequestEntityTagsProps = {
+  entity: Entity,
+}

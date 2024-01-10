@@ -1,6 +1,8 @@
 import List from "@/components/List"
+import { FilterField } from "@/components/List/Filters/types"
+import { CmsBlockType } from "@/enums/cms"
 import { Entity } from "@/enums/entity"
-import { ListItemType } from "@/enums/list"
+import { FilterItemType, ListItemType } from "@/enums/list"
 import { ListItemProps } from "@/types/list"
 
 const CmsBlockPage = () => {
@@ -8,6 +10,7 @@ const CmsBlockPage = () => {
     <List
       entity={Entity.cms_block}
       columns={COLUMNS}
+      filters={FILTERS}
       rowKey={'code'}
     />
   )
@@ -47,6 +50,18 @@ const COLUMNS: ListItemProps[] = [
     dataIndex: 'updated_at',
     key: 'updated_at',
   },
+]
+
+const FILTERS: FilterField[] = [
+  {
+    label: 'cms_block_type',
+    name: 'type',
+    type: FilterItemType.options,
+    options: Object.values(CmsBlockType).map(i => ({
+      label: `cms_block_type_${i}`,
+      value: i
+    }))
+  }
 ]
 
 export default CmsBlockPage

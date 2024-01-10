@@ -10,7 +10,8 @@ export enum DetailItemType {
   number = 'number',
   json = 'json',
   attachment = 'attachment',
-  addable = 'addable'
+  addable = 'addable',
+  tags = 'tags'
 }
 
 export enum ActionMode {

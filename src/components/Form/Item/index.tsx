@@ -12,6 +12,8 @@ import TranslateModal from '@/components/TranslateModal'
 import Editor from '@/components/Editer'
 import Attachment from '@/components/Attachment'
 import AddableList from '@/components/AddableList'
+import { t } from '@/utils/translate'
+import Tags from '@/components/Tags'
 
 const FormItemByType = ({
   type,
@@ -42,7 +44,7 @@ const FormItemByType = ({
     if (type === DetailItemType.number) {
       return (
         <FormItem {...props}>
-          <Input type={'number'} disabled={disabled} suffix={options?.suffix} />
+          <Input type={'number'} disabled={disabled} suffix={t(options?.suffix)} />
         </FormItem>
       )
     }
@@ -63,7 +65,10 @@ const FormItemByType = ({
     if (type === DetailItemType.checkbox) {
       return (
         <FormItem {...props}>
-          <Checkbox.Group options={options.options} />
+          <Checkbox.Group options={options.options.map(i => ({
+            label: t(i.label),
+            value: i.value
+          }))} />
         </FormItem>
       )
     }
@@ -128,6 +133,13 @@ const FormItemByType = ({
       return (
         <FormItem {...props}>
           <WysiwygEditor />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.tags) {
+      return (
+        <FormItem {...props}>
+          <Tags entity={options.entity} />
         </FormItem>
       )
     }

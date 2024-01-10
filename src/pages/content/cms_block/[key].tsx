@@ -91,11 +91,11 @@ const SECTIONS: SectionProps[] = [
       {
         label: 'cms_block_tags',
         name: ['content', 'tags'],
-        type: DetailItemType.select,
+        type: DetailItemType.tags,
         dependenciesFields: ['type'],
         hidden: ({ values }) => values?.type !== CmsBlockType.blog,
         options: {
-          mode: 'tags'
+          entity: Entity.blog
         }
       },
       {

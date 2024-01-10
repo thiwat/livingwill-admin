@@ -65,10 +65,10 @@ const SECTIONS: SectionProps[] = [
       {
         label: 'blog_tags',
         name: 'tags',
-        type: DetailItemType.select,
+        type: DetailItemType.tags,
         required: true,
         options: {
-          mode: 'tags'
+          entity: Entity.blog
         }
       },
       {
