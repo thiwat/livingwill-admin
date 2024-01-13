@@ -1,3 +1,4 @@
+import Cookies from 'cookies'
 import _get from 'lodash/get'
 import { join } from 'path'
 
@@ -36,8 +37,10 @@ export const request = async (
 export const getHeadersFromRequest = (req: any) => {
   const res = {}
 
-  if (req?.headers?.authorization) {
-    res['Authorization'] = `Bearer ${req.headers.authorization.split(' ')[1]}`
+  const cookies = new Cookies(req)
+
+  if (cookies.get('token')) {
+    res['Authorization'] = `Bearer ${cookies.get('token')}`
   }
 
   res['client-ip'] = (

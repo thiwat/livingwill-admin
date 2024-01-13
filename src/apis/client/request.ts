@@ -1,7 +1,6 @@
 import _get from 'lodash/get'
 import { join } from "path"
 import _isArray from 'lodash/isArray'
-import { cookies } from "../../utils/cookies"
 
 export const request = async (
   path: string,
@@ -14,10 +13,6 @@ export const request = async (
     ? {}
     : { 'Content-Type': 'application/json' }
 
-  if (cookies.get('token')) {
-    headers['Authorization'] = `Bearer ${cookies.get('token')}`
-  }
-
   method = method || 'GET'
   const reqPath = join('/api', path)
 
@@ -29,7 +24,6 @@ export const request = async (
   const resJson = await res.json()
   if (res.status < 200 || res.status >= 300) {
     if (resJson === "Forbidden resource") {
-      cookies.remove('token')
       return window.location.reload()
     }
     throw new Error(_isArray(resJson)

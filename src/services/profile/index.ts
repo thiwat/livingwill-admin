@@ -1,5 +1,4 @@
 import { useProfileState } from "@/atoms/profile"
-import { cookies } from "@/utils/cookies"
 import { useRouter } from "next/router"
 
 const useProfile = () => {
@@ -9,7 +8,6 @@ const useProfile = () => {
 
   const onLogout = () => {
     setProfile({})
-    cookies.remove('token')
     router.push('/login')
   }
 

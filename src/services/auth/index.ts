@@ -1,7 +1,6 @@
 import { requestAuthLogin, requestMyProfile } from "@/apis/client/auth"
 import { useSetProfileState } from "@/atoms/profile"
 import { useSettingsStateValue } from "@/atoms/settings"
-import { cookies } from "@/utils/cookies"
 import { useRequest } from "ahooks"
 import { useRouter } from "next/router"
 import { useRef } from "react"
@@ -16,7 +15,6 @@ const useAuth = () => {
   const authRequest = useRequest(requestAuthLogin, {
     manual: true,
     onSuccess: (r) => {
-      cookies.set('token', r.token, r.expires_in)
       myProfileRequest.run()
     },
   })
