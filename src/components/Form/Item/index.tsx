@@ -15,6 +15,7 @@ import AddableList from '@/components/AddableList'
 import { t } from '@/utils/translate'
 import Tags from '@/components/Tags'
 import NotificationTemplate from '@/components/NotificationTemplate'
+import ColorPicker from '@/components/ColorPicker'
 
 const FormItemByType = ({
   type,
@@ -60,6 +61,13 @@ const FormItemByType = ({
       return (
         <FormItem {...props}>
           <Input.Password disabled={disabled} />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.color_picker) {
+      return (
+        <FormItem {...props}>
+          <ColorPicker disabled={disabled} />
         </FormItem>
       )
     }

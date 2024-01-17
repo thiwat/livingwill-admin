@@ -74,8 +74,8 @@ export const MENU = [
         key: '/settings/security'
       },
       {
-        label: 'menu_settings_footer',
-        key: '/settings/footer'
+        label: 'menu_settings_site',
+        key: '/settings/site'
       },
       {
         label: 'menu_settings_gateway',
