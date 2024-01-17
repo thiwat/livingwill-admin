@@ -80,7 +80,7 @@ const MyApp = ({ Component, pageProps }) => {
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: PRIMARY_COLOR,
+                  colorPrimary: siteSetting.current?.site?.primary_color || PRIMARY_COLOR,
                   borderRadius: 0
                 }
               }}
