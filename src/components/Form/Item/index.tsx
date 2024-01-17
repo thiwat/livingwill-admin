@@ -14,6 +14,7 @@ import Attachment from '@/components/Attachment'
 import AddableList from '@/components/AddableList'
 import { t } from '@/utils/translate'
 import Tags from '@/components/Tags'
+import NotificationTemplate from '@/components/NotificationTemplate'
 
 const FormItemByType = ({
   type,
@@ -113,6 +114,11 @@ const FormItemByType = ({
             accept={options.accept}
           />
         </FormItem>
+      )
+    }
+    if (type === DetailItemType.notification_template) {
+      return (
+        <NotificationTemplate />
       )
     }
     if (type === DetailItemType.wysiwyg) {

@@ -14,6 +14,7 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { PRIMARY_COLOR } from '@/constants/colors';
 import { requestGetTranslate } from '@/apis/server/setting';
 import { setTranslate } from '@/utils/translate';
+import { COOKIE_OPTIONS } from '@/constants/cookies';
 
 const NOT_REQUIRE_AUTH = ["/login"];
 
@@ -28,6 +29,10 @@ const MyApp = ({ Component, pageProps }) => {
   }, [])
 
   const initialData = () => {
+    if (pageProps.cookies) {
+      COOKIE_OPTIONS.sameSite = pageProps.cookies.sameSite
+      COOKIE_OPTIONS.secure = pageProps.cookies.secure
+    }
 
     if (pageProps.settings) {
       siteSetting.current = pageProps.settings
@@ -108,6 +113,11 @@ MyApp.getInitialProps = async ({ ctx }) => {
     }
     const translates = await requestGetTranslate('admin', 'en-US', {})
     pageProps['translates'] = translates
+
+    pageProps['cookies'] = {
+      sameSite: process.env.COOKIE_SAME_SITE,
+      secure: process.env.COOKIE_SECURE === 'true'
+    }
 
     const siteSettings = await requestSiteSetting()
     pageProps['settings'] = { ...siteSettings }

@@ -1,19 +1,19 @@
+import { COOKIE_OPTIONS } from '@/constants/cookies'
 import _cloneDeep from 'lodash/cloneDeep'
-import Cookies, { CookieSetOptions, CookieGetOptions } from 'universal-cookie'
+import Cookies, { CookieSetOptions } from 'universal-cookie'
 
 const newCookies = new Cookies()
 
 type SameSite = boolean | 'strict' | 'lax' | 'none'
 
-const options: CookieSetOptions = {
-  path: '/',
-  httpOnly: process.env.COOKIE_HTTP_ONLY === 'true',
-  secure: process.env.COOKIE_SECURE === 'true',
-  sameSite: process.env.COOKIE_SAME_SITE as SameSite
-}
-
 const set = (key: string, value: any, ttl?: number) => {
-  const setOptions: CookieSetOptions = _cloneDeep(options)
+
+  const setOptions: CookieSetOptions = {
+    path: '/',
+    secure: COOKIE_OPTIONS.secure,
+    sameSite: COOKIE_OPTIONS.sameSite as SameSite
+  }
+
   if (ttl > 0) {
     setOptions['maxAge'] = ttl
   }
@@ -21,11 +21,18 @@ const set = (key: string, value: any, ttl?: number) => {
 }
 
 const get = (key: string) => {
-  return newCookies.get(key, options as CookieGetOptions)
+  return newCookies.get(key)
 }
 
 const remove = (key: string) => {
-  return newCookies.remove(key, options as CookieSetOptions)
+
+  const setOptions: CookieSetOptions = {
+    path: '/',
+    secure: COOKIE_OPTIONS.secure,
+    sameSite: COOKIE_OPTIONS.sameSite as SameSite
+  }
+
+  return newCookies.remove(key, setOptions)
 }
 
 export const cookies = {

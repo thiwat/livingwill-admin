@@ -1,4 +1,3 @@
-import { cookies } from '@/utils/cookies'
 import { getBase64FromFile } from '@/utils/file'
 import { message } from 'antd'
 import dynamic from 'next/dynamic'
@@ -31,9 +30,6 @@ const WysiwygEditor = ({
       readonly: disabled,
       uploader: {
         url: '/api/attachment/upload',
-        headers: {
-          Authorization: `Bearer ${cookies.get('token')}`
-        },
         isSuccess: (res) => {
           return !!res?.url;
         },
