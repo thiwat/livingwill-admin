@@ -11,7 +11,8 @@ export enum DetailItemType {
   json = 'json',
   attachment = 'attachment',
   addable = 'addable',
-  tags = 'tags'
+  tags = 'tags',
+  notification_template = 'notification_template'
 }
 
 export enum ActionMode {

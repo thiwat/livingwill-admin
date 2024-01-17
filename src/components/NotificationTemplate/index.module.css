@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;;
+}
+
+.itemContainer {
+  width: 200px;
+  border: 1px solid #efefef;
+}
+
+.item {
+  padding: 15px 10px;
+  border-bottom: 1px solid #efefef;
+  border-right: 4px solid;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.formContainer {
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.title {
+  margin: 4px 0px 0px;
+}
+
+.titleRow {
+  width: 100%;
+  margin-bottom: 20px;
+}
