@@ -4,7 +4,8 @@ import queryString from 'query-string'
 
 const MAP_ENTITY = {
   cms_block: 'cms/block',
-  cms_page: 'cms/page'
+  cms_page: 'cms/page',
+  master_data_relation: 'master_data/relation'
 }
 
 const mapEntityName = (entity) => {

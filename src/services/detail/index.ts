@@ -55,7 +55,7 @@ const useDetail = ({
       const key = entity === Entity.user
         ? 'user_id'
         : 'code'
-      message.success('common_create_success')
+      message.success(t('common_create_success'))
       router.replace(`${path}/[key]`, `${path}/${_get(r, key)}`)
     },
     onError: (e) => {

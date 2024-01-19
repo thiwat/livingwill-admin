@@ -53,6 +53,17 @@ export const MENU = [
     icon: 'TeamOutlined',
   },
   {
+    label: 'menu_master_data',
+    key: '/master_data',
+    icon: 'HddOutlined',
+    children: [
+      {
+        label: 'menu_master_data_relation',
+        key: '/master_data/relation'
+      }
+    ]
+  },
+  {
     label: 'menu_settings',
     key: '/settings',
     icon: 'SettingOutlined',
