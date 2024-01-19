@@ -13,7 +13,7 @@ export const prepareListColumns = (
   columns: ListItemProps[],
   key: string,
   allowDrag?: boolean,
-  onClick?: (key: string) => void,
+  onClick?: (key: string | number) => void,
 ) => {
   const cols = _cloneDeep(columns)
   if (allowDrag)
