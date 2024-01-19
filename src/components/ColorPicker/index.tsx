@@ -17,6 +17,7 @@ const ColorPicker = ({
       format={'hex'}
       onChange={_onChange}
       value={value}
+      showText
     />
   )
 }
