@@ -60,6 +60,10 @@ export const MENU = [
       {
         label: 'menu_master_data_relation',
         key: '/master_data/relation'
+      },
+      {
+        label: 'menu_master_data_product',
+        key: '/master_data/product'
       }
     ]
   },

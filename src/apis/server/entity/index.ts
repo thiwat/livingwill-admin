@@ -4,11 +4,13 @@ import queryString from 'query-string'
 
 const MAP_ENTITY = {
   cms_block: 'cms/block',
-  cms_page: 'cms/page',
-  master_data_relation: 'master_data/relation'
+  cms_page: 'cms/page'
 }
 
-const mapEntityName = (entity) => {
+const mapEntityName = (entity: string) => {
+  if (entity.startsWith('master_data')) {
+    return `master_data/${entity.replace('master_data_', '')}`
+  }
   return MAP_ENTITY[entity] || entity
 }
 
