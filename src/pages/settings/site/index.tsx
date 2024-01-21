@@ -34,7 +34,12 @@ const SECTIONS: SectionProps[] = [
         type: DetailItemType.color_picker,
         required: true,
       },
-      { type: DetailItemType.space },
+      {
+        name: ['site', 'secondary_color'],
+        label: 'setting_site_site_secondary_color',
+        type: DetailItemType.color_picker,
+        required: true,
+      },
       {
         name: ['site', 'home_page'],
         label: 'setting_site_site_home_page',
