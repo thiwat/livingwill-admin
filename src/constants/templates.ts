@@ -9,5 +9,6 @@ export const EMAIL_TEMPLATES = [
 
 export const LINE_TEMPLATES = [
   'pending_lead',
-  'submit_testament'
+  'submit_testament',
+  'payment_complete'
 ]

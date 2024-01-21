@@ -61,7 +61,7 @@ const NotificationTemplateTab = ({
           </FormItem>
         </Row>
         {type === 'email' &&
-          <>
+          <div className={styles.contentContainer}>
             <Col span={24}>
               <FormItem
                 name={['email_templates', active, 'title']}
@@ -94,10 +94,10 @@ const NotificationTemplateTab = ({
                 <WysiwygEditor />
               </FormItem>
             </Col>
-          </>
+          </div>
         }
         {type === 'line' &&
-          <>
+          <div className={styles.contentContainer}>
             <Col span={24}>
               <FormItem
                 name={['line_templates', active, 'message']}
@@ -115,7 +115,7 @@ const NotificationTemplateTab = ({
                 />
               </FormItem>
             </Col>
-          </>
+          </div>
         }
       </Row>
     </div>

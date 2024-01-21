@@ -6,6 +6,7 @@
 .itemContainer {
   width: 200px;
   border: 1px solid #efefef;
+  min-height: 500px;
 }
 
 .item {
@@ -28,4 +29,9 @@
 .titleRow {
   width: 100%;
   margin-bottom: 20px;
+}
+
+.contentContainer {
+  width: 100%;
+  height: 100%;
 }
