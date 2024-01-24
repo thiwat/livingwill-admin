@@ -3,6 +3,11 @@ type RecaptchaSetting = {
   site_key: string;
 }
 
+type SiteSetting = {
+  primary_color: string;
+}
+
 export type Settings = {
-  recaptcha?: RecaptchaSetting
+  recaptcha?: RecaptchaSetting;
+  site?: SiteSetting;
 }

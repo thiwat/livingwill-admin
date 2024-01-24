@@ -2,17 +2,19 @@ import { useState } from "react"
 import { EMAIL_TEMPLATES, LINE_TEMPLATES } from '@/constants/templates'
 import { NotificationTemplateTabProps } from "./types"
 import styles from './index.module.css'
-import { PRIMARY_COLOR } from "@/constants/colors"
 import { t } from "@/utils/translate"
 import { FormItem } from "../Form"
 import { Col, Input, Row, Switch, Typography } from "antd"
 import TranslateModal from "../TranslateModal"
 import { DetailItemType } from "@/enums/detail"
 import WysiwygEditor from "../Wysiwyg"
+import useTheme from "@/hooks/useTheme"
 
 const NotificationTemplateTab = ({
   type,
 }: NotificationTemplateTabProps) => {
+
+  const { primary_color } = useTheme()
 
   const templates = type === 'email'
     ? EMAIL_TEMPLATES
@@ -34,7 +36,7 @@ const NotificationTemplateTab = ({
         {templates.map(i => (
           <div
             key={i}
-            style={{ borderRightColor: active === i ? PRIMARY_COLOR : 'white' }}
+            style={{ borderRightColor: active === i ? primary_color : 'white' }}
             className={styles.item}
             onClick={_onChange(i)}
           >
