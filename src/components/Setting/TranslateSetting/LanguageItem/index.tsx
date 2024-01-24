@@ -1,10 +1,7 @@
 import { LanguageItemProps } from "./types"
 import styles from './index.module.css'
-import { PRIMARY_COLOR } from "@/constants/colors"
+import useTheme from "@/hooks/useTheme"
 
-const style: any = {
-  '--primary-color': PRIMARY_COLOR
-}
 
 const LanguageItem = ({
   name,
@@ -14,6 +11,8 @@ const LanguageItem = ({
   onClick
 }: LanguageItemProps) => {
 
+  const { primary_color } = useTheme()
+
   const className = isActive
     ? `${styles.container} ${styles.active}`
     : styles.container
@@ -21,6 +20,11 @@ const LanguageItem = ({
   const _onClick = () => {
     onClick(code)
   }
+
+  const style: any = {
+    '--primary-color': primary_color
+  }
+
 
   return (
     <div className={className} style={style} onClick={_onClick}>
