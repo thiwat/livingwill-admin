@@ -26,6 +26,8 @@ const FormItemByType = ({
 
   const _renderItem = ({ disabled, ...props }) => {
 
+    props['disabled'] = disabled
+
     if (type === DetailItemType.string) {
       if (props.allowTranslate) {
         return (

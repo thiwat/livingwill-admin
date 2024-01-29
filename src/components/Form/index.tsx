@@ -15,8 +15,10 @@ const Form = ({ children, ...props }: FormProps) => {
 
 export const FormItem = (props: FormItemProps) => {
 
+  const disabled = props['disabled']
+
   const rules = props.rules || []
-  if (props.required) {
+  if (props.required && !disabled) {
     rules.push({
       required: true,
       message: ('info_required_field')

@@ -79,17 +79,20 @@ const SECTIONS: SectionProps[] = [
         name: 'app_key',
         type: DetailItemType.string,
         disabled: true,
+        required: true
       },
       {
         label: 'application_secret_key',
         name: 'secret_key',
         type: DetailItemType.string,
         disabled: true,
+        required: true
       },
       {
         label: 'application_roles',
         name: 'roles',
         type: DetailItemType.select,
+        required: true,
         options: {
           mode: 'multiple',
           options: [
@@ -104,6 +107,7 @@ const SECTIONS: SectionProps[] = [
         label: 'application_use_recaptcha',
         name: 'use_recaptcha',
         type: DetailItemType.boolean,
+        required: true
       },
     ]
   }
