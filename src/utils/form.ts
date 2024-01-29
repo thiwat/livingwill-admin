@@ -16,17 +16,17 @@ export const executeBooleanValue = (value: boolean | FieldValueFunction, extra):
 }
 
 export const getItemProps = (props, extra) => {
-  const temp = _cloneDeep(props)
-  temp['required'] = executeBooleanValue(temp.required, extra)
-  temp['disabled'] = executeBooleanValue(temp.disabled, extra)
-  temp['hidden'] = executeBooleanValue(temp.hidden, extra)
+  const cloneProps = _cloneDeep(props)
+  cloneProps['required'] = executeBooleanValue(cloneProps.required, extra)
+  cloneProps['disabled'] = executeBooleanValue(cloneProps.disabled, extra)
+  cloneProps['hidden'] = executeBooleanValue(cloneProps.hidden, extra)
 
-  if (temp.dependenciesFields) {
-    temp['dependencies'] = temp.dependenciesFields
-    delete temp['dependenciesFields']
+  if (cloneProps.dependenciesFields) {
+    cloneProps['dependencies'] = cloneProps.dependenciesFields
+    delete cloneProps['dependenciesFields']
   }
 
-  return temp
+  return cloneProps
 }
 
 export const prepareInitialData = (data: any, sections: SectionProps[]) => {

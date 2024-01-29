@@ -7,7 +7,8 @@ import styles from './index.module.css'
 
 export const LoginForm = () => {
 
-  const { recaptcha,
+  const {
+    recaptcha,
     login,
     onVerifyCaptcha
   } = useAuth()
