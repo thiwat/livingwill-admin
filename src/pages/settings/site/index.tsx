@@ -63,6 +63,13 @@ const SECTIONS: SectionProps[] = [
         }
       },
       {
+        name: ['site', 'mapping_blocks'],
+        label: 'setting_site_site_mapping_blocks',
+        type: DetailItemType.block_mapping,
+        required: true,
+        span: 24
+      },
+      {
         name: ['site', 'header_script'],
         label: 'setting_site_site_header_script',
         type: DetailItemType.html,
