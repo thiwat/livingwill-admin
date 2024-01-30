@@ -33,7 +33,7 @@ const Editor = ({
     <AceEditor
       disabled={disabled}
       mode={mode}
-      defaultValue={value || ''}
+      value={value || ''}
       theme={'tomorrow'}
       onChange={onChange}
       setOptions={{
