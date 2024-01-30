@@ -62,6 +62,22 @@ const SECTIONS: SectionProps[] = [
           value: '${ code }'
         }
       },
+      {
+        name: ['site', 'header_script'],
+        label: 'setting_site_site_header_script',
+        type: DetailItemType.html,
+      },
+      { type: DetailItemType.space },
+      {
+        name: ['site', 'before_body_script'],
+        label: 'setting_site_site_before_body_script',
+        type: DetailItemType.html,
+      },
+      {
+        name: ['site', 'after_body_script'],
+        label: 'setting_site_site_after_body_script',
+        type: DetailItemType.html,
+      },
     ]
   }
 ]

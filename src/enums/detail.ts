@@ -12,6 +12,7 @@ export enum DetailItemType {
   json = 'json',
   attachment = 'attachment',
   addable = 'addable',
+  html = 'html',
   tags = 'tags',
   notification_template = 'notification_template'
 }
