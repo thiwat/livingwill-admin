@@ -6,6 +6,7 @@ export enum DetailItemType {
   string = 'string',
   password = 'password',
   datetime = 'datetime',
+  block_mapping = 'block_mapping',
   select = 'select',
   wysiwyg = 'wysiwyg',
   number = 'number',

@@ -16,6 +16,7 @@ import { t } from '@/utils/translate'
 import Tags from '@/components/Tags'
 import NotificationTemplate from '@/components/NotificationTemplate'
 import ColorPicker from '@/components/ColorPicker'
+import BlockMapping from '@/components/BlockMapping'
 
 const FormItemByType = ({
   type,
@@ -106,6 +107,13 @@ const FormItemByType = ({
             allowDrag={options.allowDrag}
             disabled={disabled}
           />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.block_mapping) {
+      return (
+        <FormItem {...props}>
+          <BlockMapping />
         </FormItem>
       )
     }

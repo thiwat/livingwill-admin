@@ -28,19 +28,24 @@ const useDetail = ({
   const [form] = AntForm.useForm()
   const [breadcrumb, setBreadcrumb] = useBreadcrumbState()
 
+  const _setTitle = (data): void => {
+    if (title) {
+      const compiledTitle = compileTemplate(title, data)
+      setBreadcrumb(compiledTitle)
+    }
+  }
+
   const getRequest = useRequest(requestDetail, {
     manual: true,
     onSuccess: (r) => {
-      if (title) {
-        const compiledTitle = compileTemplate(title, r)
-        setBreadcrumb(compiledTitle)
-      }
+      _setTitle(title)
     }
   })
 
   const updateRequest = useRequest(requestUpdate, {
     manual: true,
     onSuccess: (r) => {
+      _setTitle(r)
       message.success(t('common_update_success'))
     },
     onError: (e) => {
@@ -56,6 +61,8 @@ const useDetail = ({
         ? 'user_id'
         : 'code'
       message.success(t('common_create_success'))
+      _setTitle(r)
+      form.setFieldsValue(prepareInitialData(r, sections))
       router.replace(`${path}/[key]`, `${path}/${_get(r, key)}`)
     },
     onError: (e) => {
@@ -145,6 +152,9 @@ const useDetail = ({
         entity,
         id: keyData
       })
+    }
+    if (keyData === 'create') {
+      form.setFieldsValue(prepareInitialData({}, sections))
     }
   }, [])
 
