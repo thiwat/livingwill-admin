@@ -1,5 +1,5 @@
 import { requestGetTranslate, requestSetTranslate } from "@/apis/client/setting"
-import Editor from "@/components/Editer"
+import Editor from "@/components/Editor"
 import { t } from "@/utils/translate"
 import { useRequest } from "ahooks"
 import { Button, message } from "antd"

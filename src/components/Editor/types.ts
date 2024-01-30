@@ -1,5 +1,5 @@
 export type EditorProps = {
-  mode?: 'json';
+  mode?: 'json' | 'html';
   value?: any;
   onChange?: Function,
   disabled?: boolean;

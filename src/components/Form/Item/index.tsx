@@ -9,7 +9,7 @@ import { getItemProps } from '@/utils/form'
 import Select from '@/components/Select'
 import WysiwygEditor from '@/components/Wysiwyg'
 import TranslateModal from '@/components/TranslateModal'
-import Editor from '@/components/Editer'
+import Editor from '@/components/Editor'
 import Attachment from '@/components/Attachment'
 import AddableList from '@/components/AddableList'
 import { t } from '@/utils/translate'
@@ -113,6 +113,13 @@ const FormItemByType = ({
       return (
         <FormItem {...props}>
           <Editor />
+        </FormItem>
+      )
+    }
+    if (type === DetailItemType.html) {
+      return (
+        <FormItem {...props}>
+          <Editor mode={'html'} />
         </FormItem>
       )
     }
